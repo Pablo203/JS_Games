@@ -1,0 +1,54 @@
+.main{
+    width: 540px;
+    height: 540px;
+    /*border: 1px solid black;*/
+    margin: 2% 0% 0% 30%;
+    float: left;
+}
+
+.field{
+    width: 178px;
+    height: 178px;
+    border: 1px solid black;
+    float: left;
+    text-align: center;
+}
+
+.field-text{
+    margin-top: 15%;
+    font-size: 100px;
+}
+
+.button-field{
+    background-color: white;
+    color: black;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 100px;
+}
+
+.info-window{
+    height: 350px;
+    width: 400px;
+    /*border: 1px solid black;*/
+    margin-top: 10%;
+    margin-left: 4%;
+    float: left;
+}
+
+.info-window-field{
+    border: 1px solid black;
+    margin-top: 10px;
+    height: 80px;
+    width: 350px;
+}
+.info-box-text{
+    margin-top: 22px;
+    font-size: 30px;
+}
+
+.new-game-btn{
+    margin-top: 30px;
+    margin-left: 70px;
+}
