@@ -1,0 +1,105 @@
+body{
+    background-color: #000000;
+}
+
+.main{
+    width: 99%;
+    height: 97%;
+    border: 1px solid white;
+    position: absolute;
+}
+
+.hanger-area{
+    color: white;
+    width: 48%;
+    height: 60%;
+    border: 1px solid white;
+    position: relative;
+}
+
+.missed-letters{
+    color: white;
+    width: 48%;
+    height: 40%;
+    border: 1px solid white;
+    position: absolute;
+    left: 51%;
+    bottom: 59%;
+}
+
+.password{
+    color: white;
+    border: 1px solid white;
+    width: 48%;
+    height: 35%;
+    position: relative;
+    top: 3%;
+    justify-items: center;
+}
+
+.letters{
+    color: white;
+    border: 1px solid white;
+    width: 48%;
+    height: 50%;
+    position: relative;
+    left: 51%;
+    top: -47%;
+}
+
+.letters-buttons{
+    display: grid;
+    grid-template-columns: repeat(8, 12.5%);
+    grid-template-rows: repeat(4, 99.6%);
+    color: white;
+}
+
+.alphabet-btn{
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+.used-letters{
+    color: white;
+    border: 1px solid white;
+    height: 49.5%;
+    width: 100%;
+}
+
+.info-letters{
+    color: white;
+    border: 1px solid white;
+    height: 49.5%;
+    width: 100%;
+}
+
+.info{
+    color: white;
+    /*font-size: 35px;*/
+    font-size: 220%;
+    margin: 7% 0% 0% 0%;
+    text-align: center;
+}
+
+.use{
+    margin-top: 2%;
+    font-size: 150%;
+}
+
+.pass_word{
+    float: left;
+    text-align: center;
+    /*font-size: 40px;
+    margin-top: 10%;
+    margin-left: 2%;*/
+}
+
+.word{
+    text-align: center;
+    margin-left: 17%;
+    margin-top: 11%;
+    font-size: 40px;
+}

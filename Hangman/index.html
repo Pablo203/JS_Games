@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hangman</title>
+        <link rel="stylesheet" href="main.css">
+        <meta author="Paweł Rosa">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="main">
+            <!-- Wisielec -->
+            <div class="hanger-area">
+                <img src="#" alt="Hangman">
+            </div>
+
+            <!-- Prawo Góra. Wykorzystane litery-->
+            <div class="missed-letters">
+                <div class="used-letters">
+                    <p class="use" id="missed_letters">
+
+                    </p>
+                </div>
+                <div class="info-letters">
+                    <p class="info">
+                        Wykorzystałeś już tą literę: A
+                    </p>
+                </div>
+            </div>
+
+            <!-- Ilość liter w haśle -->
+            <div class="password">
+                <p class="word" id="pass">
+
+                </p>
+            </div>
+
+            <!-- Klawiatura -->
+            <div class="letters">
+                <div class="letters-buttons">
+                    <div><button class="alphabet-btn" onclick="letter_print('A')">A</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('Ą')">Ą</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('B')">B</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('C')">C</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('Ć')">Ć</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('D')">D</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('E')">E</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('Ę')">Ę</button></div>
+
+                    <div><button class="alphabet-btn" onclick="letter_print('F')">F</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('G')">G</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('H')">H</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('I')">I</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('J')">J</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('K')">K</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('L')">L</button></div>
+                    <div><button class="alphabet-btn" onclick="letter_print('Ł')">Ł</button></div>
+
+                    <div><button class="alphabet-btn" onclick="">M</button></div>
+                    <div><button class="alphabet-btn" onclick="">N</button></div>
+                    <div><button class="alphabet-btn" onclick="">Ń</button></div>
+                    <div><button class="alphabet-btn" onclick="">O</button></div>
+                    <div><button class="alphabet-btn" onclick="">Ó</button></div>
+                    <div><button class="alphabet-btn" onclick="">P</button></div>
+                    <div><button class="alphabet-btn" onclick="">R</button></div>
+                    <div><button class="alphabet-btn" onclick="">S</button></div>
+
+                    <div><button class="alphabet-btn" onclick="">Ś</button></div>
+                    <div><button class="alphabet-btn" onclick="">T</button></div>
+                    <div><button class="alphabet-btn" onclick="">U</button></div>
+                    <div><button class="alphabet-btn" onclick="">W</button></div>
+                    <div><button class="alphabet-btn" onclick="">Y</button></div>
+                    <div><button class="alphabet-btn" onclick="">Z</button></div>
+                    <div><button class="alphabet-btn" onclick="">Ź</button></div>
+                    <div><button class="alphabet-btn" onclick="">Ż</button></div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
