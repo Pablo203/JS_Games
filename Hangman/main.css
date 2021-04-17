@@ -54,7 +54,7 @@ body{
     color: white;
 }
 
-.alphabet-btn{
+.alphabet_btn{
     background-color: black;
     color: white;
     text-align: center;
@@ -102,4 +102,22 @@ body{
     margin-left: 17%;
     margin-top: 11%;
     font-size: 40px;
+}
+
+.new_game{
+    float: right;
+    width: 15%;
+    height: 100%;
+    border: 1px solid white;
+    margin-top: -11%;
+    display: inline;
+}
+
+#new_game_btn{
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    display: none;
 }
