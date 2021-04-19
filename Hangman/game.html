@@ -1,84 +1,89 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Hangman</title>
-        <link rel="stylesheet" href="main.css">
-        <meta charset="UTF-8">
-        <meta author="Paweł Rosa">
-    </head>
-    <body>
-        <div class="main">
-            <!-- Wisielec -->
-            <div class="hanger-area">
-                <img src="#" alt="Hangman" id="hangman_img">
+
+<head>
+    <title>Hangman</title>
+    <link rel="stylesheet" href="../bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <script src="../bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta author="Paweł Rosa">
+</head>
+
+<body>
+    <div class="main">
+        <!-- Wisielec -->
+        <div class="hanger-area">
+            <img src="#" alt="Hangman" id="hangman_img">
+        </div>
+
+        <!-- Prawo Góra. Wykorzystane litery-->
+        <div class="missed-letters">
+            <div class="used-letters">
+                <p class="use" id="missed_letters">
+
+                </p>
             </div>
+            <div class="info-letters">
+                <p class="info" id="info2">
 
-            <!-- Prawo Góra. Wykorzystane litery-->
-            <div class="missed-letters">
-                <div class="used-letters">
-                    <p class="use" id="missed_letters">
-
-                    </p>
-                </div>
-                <div class="info-letters">
-                    <p class="info" id="info2">
-                        
-                    </p>
-                </div>
-            </div>
-
-            <!-- Ilość liter w haśle -->
-            <div class="password">
-                <div class="word" id="pass">
-
-                </div>
-                <div class="new_game">
-                    <button id="new_game_btn" onclick="new_game()">Nowa Gra</button>
-                </div>
-            </div>
-
-            <!-- Klawiatura -->
-            <div class="letters">
-                <div class="letters-buttons">
-                    <div><button class="alphabet_btn" onclick="letter_print('A')" id="a">A</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('Ą')" id="ą">Ą</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('B')" id="b">B</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('C')" id="c">C</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('Ć')" id="ć">Ć</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('D')" id="d">D</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('E')" id="e">E</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('Ę')" id="ę">Ę</button></div>
-
-                    <div><button class="alphabet_btn" onclick="letter_print('F')" id="f">F</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('G')" id="g">G</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('H')" id="h">H</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('I')" id="i">I</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('J')" id="j">J</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('K')" id="k">K</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('L')" id="l">L</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('Ł')" id="ł">Ł</button></div>
-
-                    <div><button class="alphabet_btn" onclick="letter_print('M')" id="m">M</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('N')" id="n">N</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('Ń')" id="ń">Ń</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('O')" id="o">O</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('Ó')" id="ó">Ó</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('P')" id="p">P</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('R')" id="r">R</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('S')" id="s">S</button></div>
-
-                    <div><button class="alphabet_btn" onclick="letter_print('Ś')" id="ś">Ś</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('T')" id="t">T</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('U')" id="u">U</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('W')" id="w">W</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('Y')" id="y">Y</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('Z')" id="z">Z</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('Ź')" id="ź">Ź</button></div>
-                    <div><button class="alphabet_btn" onclick="letter_print('Ż')" id="ż">Ż</button></div>
-                </div>
+                </p>
             </div>
         </div>
-        <!--<script type="text/javascript" src="passes.json"></script>-->
-        <script type="text/javascript" src="script.js"></script>
-    </body>
+
+        <!-- Ilość liter w haśle -->
+        <div class="password">
+            <div class="word" id="pass">
+
+            </div>
+            <div class="new_game">
+                <button id="new_game_btn" onclick="new_game()">Nowa Gra</button>
+            </div>
+        </div>
+
+        <!-- Klawiatura -->
+        <div class="letters">
+            <div class="letters-buttons">
+                <div><button class="alphabet_btn" onclick="letter_print('A')" id="a">A</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('Ą')" id="ą">Ą</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('B')" id="b">B</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('C')" id="c">C</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('Ć')" id="ć">Ć</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('D')" id="d">D</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('E')" id="e">E</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('Ę')" id="ę">Ę</button></div>
+
+                <div><button class="alphabet_btn" onclick="letter_print('F')" id="f">F</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('G')" id="g">G</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('H')" id="h">H</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('I')" id="i">I</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('J')" id="j">J</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('K')" id="k">K</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('L')" id="l">L</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('Ł')" id="ł">Ł</button></div>
+
+                <div><button class="alphabet_btn" onclick="letter_print('M')" id="m">M</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('N')" id="n">N</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('Ń')" id="ń">Ń</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('O')" id="o">O</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('Ó')" id="ó">Ó</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('P')" id="p">P</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('R')" id="r">R</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('S')" id="s">S</button></div>
+
+                <div><button class="alphabet_btn" onclick="letter_print('Ś')" id="ś">Ś</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('T')" id="t">T</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('U')" id="u">U</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('W')" id="w">W</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('Y')" id="y">Y</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('Z')" id="z">Z</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('Ź')" id="ź">Ź</button></div>
+                <div><button class="alphabet_btn" onclick="letter_print('Ż')" id="ż">Ż</button></div>
+            </div>
+        </div>
+    </div>
+    <!--<script type="text/javascript" src="passes.json"></script>-->
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
 </html>
