@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html style="overflow-x: hidden;">
+
+<head>
+    <title>Kalkulator</title>
+    <link rel="stylesheet" href="../bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="title">Kalkulator</div>
+            <div class="math">
+                <p class="math_text" id="calculations">
+                     &nbsp;
+                </p>
+            </div>
+            <div class="buttons_numbers">
+                <button class="btn btn-secondary" onclick="count('+')">+</button>
+                <button class="btn btn-secondary" onclick="count('-')">-</button>
+                <button class="btn btn-secondary" onclick="count('*')">*</button>
+                <button class="btn btn-secondary" onclick="count('/')">/</button>
+
+                <button class="btn btn-light" onclick="count(9)">9</button>
+                <button class="btn btn-light" onclick="count(8)">8</button>
+                <button class="btn btn-light" onclick="count(7)">7</button>
+                <button class="btn btn-secondary" onclick="count('=')">=</button>
+
+                <button class="btn btn-light" onclick="count(6)">6</button>
+                <button class="btn btn-light" onclick="count(5)">5</button>
+                <button class="btn btn-light" onclick="count(4)">4</button>
+                <button class="btn btn-secondary" onclick="count('.')">.</button>
+                
+                <button class="btn btn-light" onclick="count(3)">3</button>
+                <button class="btn btn-light" onclick="count(2)">2</button>
+                <button class="btn btn-light" onclick="count(1)">1</button>
+                <button class="btn btn-light" onclick="count(0)">0</button>
+            </div>
+            <button class="btn-secondary clear" onclick="cls()">Clear</button>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
