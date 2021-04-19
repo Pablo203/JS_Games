@@ -1,3 +1,8 @@
+/*var password;
+var words_guess = ["wilk", "ABC", "Kot", "Pies"];*/
+
+
+
 var password = "abc";
 var word = password.toLowerCase();
 var letter;

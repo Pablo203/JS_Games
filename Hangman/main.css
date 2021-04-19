@@ -2,6 +2,7 @@ body{
     background-color: #000000;
 }
 
+/*Game Page Start*/
 .main{
     width: 99%;
     height: 97%;
@@ -78,7 +79,6 @@ body{
 
 .info{
     color: white;
-    /*font-size: 35px;*/
     font-size: 220%;
     margin: 7% 0% 0% 0%;
     text-align: center;
@@ -92,9 +92,6 @@ body{
 .pass_word{
     float: left;
     text-align: center;
-    /*font-size: 40px;
-    margin-top: 10%;
-    margin-left: 2%;*/
 }
 
 .word{
@@ -120,4 +117,24 @@ body{
     height: 100%;
     width: 100%;
     display: none;
+}
+
+/*Welcome Page Start*/
+
+.self{
+    color: black;
+    border: 1px solid white;
+    height: 50%;
+    width: 33%;
+    margin-left: 35%;
+    margin-top: 70%;
+}
+
+.rand{
+    border: 1px solid white;
+    height: 50%;
+    width: 33%;
+    margin-left: 35%;
+    margin-top: 70%;
+
 }
