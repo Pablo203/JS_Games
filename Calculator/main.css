@@ -18,14 +18,15 @@
 
 .title{
     background-color: #a1a1a1;
-    height: 10%;
+    height: 15%;
     width: 80%;
     margin-left: 10%;
     margin-top: 10%;
+    margin-bottom: -3.5%;
     text-align: left;
-    font-size: 25px;
+    font-size: 30px;
+    font-weight: bold;
 }
-
 
 .btn{
     margin-left: 10%;
