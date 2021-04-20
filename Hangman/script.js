@@ -1,10 +1,15 @@
-/*var password;
-var words_guess = ["wilk", "ABC", "Kot", "Pies"];*/
+var password = { pass: " "};
+var words_guess = ["wilk", "ABC", "Kot", "Pies", "Samochód", "Ryś", "Czołg", "Koniczyna", "Osioł", "Pluszak"];
+ 
+//Losowanie hasłą z tablicy
+function randed(obj){
+    var which = Math.floor(Math.random() * 10);    
+    obj.pass = words_guess[which];
+}
 
+onload = randed(password);
 
-
-var password = "abc";
-var word = password.toLowerCase();
+var word = password.pass.toLowerCase();
 var letter;
 var letters = [];
 var field;
@@ -13,8 +18,6 @@ var used = 1;
 var pass = [];
 var life = 13;
 var guessed = 0;
-/*var myPass = JSON.parse(passes);
-console.log(myPass);*/
 
 //Wpisanie hasła w tablicę
 function pass_array() {
@@ -33,6 +36,7 @@ function password_fields() {
 }
 onload = password_fields();
 
+//Uruchamianie klawiatury
 function btnDisable() {
     var x = document.getElementsByClassName("alphabet_btn");
     for (var i = 0; i < x.length; i++) {
@@ -41,6 +45,7 @@ function btnDisable() {
     document.getElementById("new_game_btn").style.display = "inline";
 }
 
+//Wyłączanie klawiatury
 function btnEnable() {
     var x = document.getElementsByClassName("alphabet_btn");
     for (var i = 0; i < x.length; i++) {
@@ -90,6 +95,7 @@ function letter_print(letter) {
     }
 }
 
+//Resetowanie ustawień i zmiennych do nowej gry
 function new_game() {
     document.getElementById("info2").innerHTML = " ";
     document.getElementById("missed_letters").innerHTML = " ";
