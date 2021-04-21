@@ -1,15 +1,45 @@
-var password = { pass: " "};
+var password = {
+    pass: " "
+};
+var word = {
+    words: " ",
+    long: " "
+};
 var words_guess = ["wilk", "ABC", "Kot", "Pies", "Samochód", "Ryś", "Czołg", "Koniczyna", "Osioł", "Pluszak"];
- 
-//Losowanie hasłą z tablicy
-function randed(obj){
-    var which = Math.floor(Math.random() * 10);    
-    obj.pass = words_guess[which];
+var to_rand = words_guess.length;
+var choice = " ";
+
+function randed(obj) {
+    var which = Math.floor(Math.random() * to_rand);
+    obj.words = words_guess[which];
 }
 
-onload = randed(password);
+function gamemode(that) {
+    if (choice == " ") {
+        if (confirm("You want to input word by yourself?")) {
+            //Wpisanie hasła przez gracza
+            that.words = prompt("Write down your word").toLowerCase();
+            that.long = that.words.length;
+            choice = "self";
 
-var word = password.pass.toLowerCase();
+        } else {
+            //Losowanie hasła z tablicy
+            randed(word);
+            that.long = that.words.length;
+            console.log(password.pass);
+            choice = "auto";
+        }
+    } else if (choice == "self") {
+        that.words = prompt("Write down your word");
+        that.long = that.words.length;
+    } else if (choice == "auto") {
+        randed(word);
+        that.long = that.words.length;
+    }
+}
+
+onload = gamemode(word);
+
 var letter;
 var letters = [];
 var field;
@@ -19,27 +49,27 @@ var pass = [];
 var life = 13;
 var guessed = 0;
 
-//Wpisanie hasła w tablicę
-function pass_array() {
-    for (let i = 0; i < word.length; i++) {
-        pass[i] = word.charAt(i);
-    }
-}
-onload = pass_array();
 
-//Wyświetlanie odpowiedniej ilości pól w haśle
-function password_fields() {
-    for (let i = 0; i < word.length; i++) {
-        field = "<div class='pass_word' id=" + i + ">&nbsp;&nbsp;_</div>";
-        document.getElementById("pass").innerHTML += field;
+//Wpisanie hasła w tablicę i wyświetlanie pól w haśle
+function pass_array(pass) {
+    for (let i = 0; i < word.long; i++) {
+        pass[i] = word.words.charAt(i);
+        if (pass[i] == " ") {
+            field = "<div class = 'pass_word' id = " + i + ">&nbsp;</div>"
+            document.getElementById("pass").innerHTML += field;
+            guessed++;
+        } else if (pass[i] != " ") {
+            field = "<div class = 'pass_word' id=" + i + ">&nbsp;_</div>";
+            document.getElementById("pass").innerHTML += field;
+        }
     }
 }
-onload = password_fields();
+onload = pass_array(pass);
 
 //Uruchamianie klawiatury
 function btnDisable() {
     var x = document.getElementsByClassName("alphabet_btn");
-    for (var i = 0; i < x.length; i++) {
+    for (let i = 0; i < x.length; i++) {
         x[i].disabled = true;
     }
     document.getElementById("new_game_btn").style.display = "inline";
@@ -48,8 +78,8 @@ function btnDisable() {
 //Wyłączanie klawiatury
 function btnEnable() {
     var x = document.getElementsByClassName("alphabet_btn");
-    for (var i = 0; i < x.length; i++) {
-        x[i].disabled =false;
+    for (let i = 0; i < x.length; i++) {
+        x[i].disabled = false;
     }
     document.getElementById("new_game_btn").style.display = "none";
 }
@@ -83,13 +113,13 @@ function letter_print(letter) {
         life--;
         i++;
     }
-    document.getElementById("hangman_img").src = life + ".png";
+    document.getElementById("hangman_img").src = "img/" + life + ".png";
     i++;
     //Warunki kończące grę
     if (life == 0) {
         document.getElementById("info2").innerHTML = "You hanged a man!";
         btnDisable();
-    } else if (guessed == word.length) {
+    } else if (guessed == word.long) {
         document.getElementById("info2").innerHTML = "You saved a man!";
         btnDisable();
     }
@@ -100,12 +130,17 @@ function new_game() {
     document.getElementById("info2").innerHTML = " ";
     document.getElementById("missed_letters").innerHTML = " ";
     document.getElementById("pass").innerHTML = " ";
-    for(let i; i<letters.length; i++){
+    for (let i; i < letters.length; i++) {
         letters[i] = 0;
+    }
+    for (let i; i < pass.length; i++) {
+        pass[i] = 0;
     }
     life = 13;
     guessed = 0;
-    pass_array();
-    password_fields();
+    word.words = " ";
+    gamemode(word);
+    pass_array(pass);
+    document.getElementById("hangman_img").src = "img/13.png";
     btnEnable();
 }
