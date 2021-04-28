@@ -5,7 +5,7 @@ var fields_id_help = 0;
 var x, y = 0;
 var bomb_number = 0;
 var bomb_used = [];
-
+//Variables to win
 var to_win = 0;
 var clear = 0;
 //Wyświetlenie planszy i przypisanie ID do pól
@@ -13,7 +13,7 @@ board = (mode) => {
     //Przypisanie wartości z pola formularza z wielkością planszy
     size = mode;
     to_win = size * size;
-    console.log(to_win);
+    //Choosing font size depending on board size
     var text_size = 0;
     if (size == 8) {
         text_size = 20;
@@ -107,6 +107,7 @@ bombs_nearby = (ID) => {
             }
         }
     }
+    //Wyświetlanie liczby bomb dookoła wybranego pola i dopasowanie do niego koloru
     switch (temp) {
         case 0:
             document.getElementById(ID).style = "background-color: #c5c5c5; color: white;";
@@ -170,6 +171,7 @@ field_check = (ID) => {
 }
 
 win = () => {
+    //Jeśli wszystkie pola są odkryte i nie trafiono bomby Wygrana
     if (to_win == clear) {
         document.getElementById("info").innerHTML = "Wygrałeś"
         var a = document.getElementsByClassName("field");
