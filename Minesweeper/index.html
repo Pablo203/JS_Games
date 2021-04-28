@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="../bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-lg-2">
+            <article class="form-group">
+                <strong>Choose gamemode:</strong><br><br>
+                <button onclick="board(8), bombs(5)">Easy</button><br><br>
+                <button onclick="board(14), bombs(20)">Medium</button><br><br>
+                <button onclick="board(18), bombs(40)">Hard</button><br><br>
+                <!--<button onclick="test()">asdad</button>-->
+            </article>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="minesweeper_holder">
+                <div class="minesweeper_field" id="mine">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 asd">a</div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
