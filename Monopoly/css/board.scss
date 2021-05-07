@@ -1,0 +1,397 @@
+@import "variables.scss";
+
+@mixin border {
+    border: 1px solid black;
+}
+
+.board-holder {
+    /*border: 1px solid black;*/
+    height: 100%;
+    width: 100%;
+}
+
+.board-outer {
+    //@include border;
+    height: 116%;
+    width: 80%;
+    margin: 0% 0% 0% 10%;
+    display: grid;
+    grid-template-columns: repeat(13, 7.7%);
+    grid-template-rows: repeat(13, 7%);
+}
+
+//Fields
+.board-field {
+    @include border;
+    height: 100%;
+    width: 100%;
+}
+
+.field {
+    @include border;
+    height: 100%;
+}
+
+.inside-field {
+    @include border;
+    grid-column: 3/12;
+    grid-row: 3/12;
+}
+
+.top-left-corner-field {
+    @include border;
+    grid-column: 1/3;
+    grid-row: 1/3;
+    position: relative;
+}
+
+.top-right-corner-field {
+    @include border;
+    grid-column: 12/14;
+    grid-row: 1/3;
+    position: relative;
+}
+
+.bottom-left-corner-field {
+    @include border;
+    grid-column: 1/3;
+    grid-row: 12/14;
+    position: relative;
+}
+
+.bottom-right-corner-field {
+    @include border;
+    grid-column: 12/14;
+    grid-row: 12/14;
+    position: relative;
+}
+
+
+.top-row-field {
+    @include border;
+    position: relative;
+    grid-row: 1/3;
+}
+
+.left-side-field {
+    @include border;
+    position: relative;
+    grid-column: 1/3;
+}
+
+.right-side-field {
+    @include border;
+    position: relative;
+    grid-column: 12/14;
+}
+
+.bottom-row-field {
+    @include border;
+    position: relative;
+    grid-row: 12/14;
+}
+
+@mixin field-color-bottom {
+    width: 103%;
+    height: 25%;
+    margin-top: -1%;
+    margin-left: -2%;
+}
+
+.brown-color {
+    @include field-color-bottom;
+    @include border;
+    background-color: brown;
+}
+
+.light-blue-color {
+    @include field-color-bottom;
+    @include border;
+    background-color: lightblue;
+}
+
+.black-color-B{
+    @include field-color-bottom;
+    @include border;
+    background-color: black;
+}
+
+@mixin field-color-left {
+    width: 25%;
+    height: 103%;
+    float: right;
+    margin-top: -1%;
+    margin-right: -1%;
+}
+
+.black-color-L{
+    @include field-color-left;
+    @include border;
+    background-color: black;
+}
+.pink-color {
+    @include field-color-left;
+    @include border;
+    background-color: pink;
+}
+
+.orange-color {
+    @include field_color-left;
+    @include border;
+    background-color: orange;
+}
+
+@mixin field-color-right {
+    width: 25%;
+    height: 103%;
+    float: left;
+    margin-top: -1%;
+    margin-left: -1%;
+}
+
+.black-color-R{
+    @include field-color-right;
+    @include border;
+    background-color: black;
+}
+.blue-color {
+    @include field-color-right;
+    @include border;
+    background-color: blue;
+}
+
+.green-color {
+    @include field-color-right;
+    @include border;
+    background-color: green;
+}
+
+@mixin field-color-top {
+    width: 103%;
+    height: 25%;
+    margin-top: -1%;
+    margin-left: -2%;
+}
+
+.black-color-T{
+    @include field-color-top;
+    @include border;
+    background-color: black;
+}
+.red-color {
+    @include field-color-top;
+    @include border;
+    background-color: red;
+}
+
+.yellow-color {
+    @include field-color-top;
+    @include border;
+    background-color: yellow;
+}
+
+
+.text {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.text-2 {
+    
+    font-size: 15px;
+    margin-top: -12%;
+    width: 40%;
+    float: left;
+}
+
+
+
+//Special Fields
+//Pawn Places on Board
+@mixin pawn-place-S{
+    
+    height: 50%;
+    width: 25%;
+    position: absolute;
+}
+.pawn-place-1-R{
+    @include pawn-place-S;
+    margin-top: -27%;
+    margin-left: 75%;
+}
+.pawn-place-2-R{
+    @include pawn-place-S;
+    margin-top: -4%;
+    margin-left: 75%;
+}
+
+.pawn-place-1-L{
+    @include pawn-place-S;
+    margin-top: -27%;
+    margin-left: 45%;
+}
+.pawn-place-2-L{
+    @include pawn-place-S;
+    margin-top: -7%;
+    margin-left: 45%;
+}
+
+
+@mixin pawn-place-TB{
+    height: 25%;
+    width: 50%;
+    margin-top: 25%;
+    position: absolute;
+}
+.pawn-place-1-T{
+    @include pawn-place-TB;
+    
+}
+.pawn-place-2-T{
+    @include pawn-place-TB;
+    margin-left: 50%;
+}
+
+.pawn-place-1-B{
+    @include pawn-place-TB;
+
+}
+.pawn-place-2-B{
+    @include pawn-place-TB;
+    margin-left: 50%;
+}
+
+.chance-S{
+    height: 150%;
+    width: 40%;
+    @include border;
+    transform: rotate(-90deg);
+    margin-top: -10.5%;
+    margin-left: 12%;
+    text-align: center;
+    font-size: 60px;
+}
+
+.chance-TB{
+    @include border;
+    height: 55%;
+    width: 98%;
+    text-align: center;
+    font-size: 45px;
+}
+
+.chest-area-left{
+    @include border;
+    height: 120%;
+    width: 40%;
+    margin: -4% 0% 0% 45%;
+    transform: rotate(90deg);
+    position: relative;
+}
+
+.chest-area-right{
+    @include border;
+    height: 120%;
+    width: 40%;
+    margin: -5% 0% 0% 15%;
+    transform: rotate(-90deg);
+    position: relative;
+}
+
+.electric-field{
+    @include border;
+    height: 120%;
+    width: 40%;
+    margin: -4% 0% 0% 45%;
+    transform: rotate(90deg);
+    position: relative;
+}
+
+.luxury-tax{
+    @include border;
+    height: 120%;
+    width: 40%;
+    margin: -5% 0% 0% 15%;
+    transform: rotate(-90deg);
+    position: relative;
+}
+
+.special{
+    @include border;
+    height: 55%;
+    width: 98%;
+    text-align: center;
+    font-size: 20px;
+}
+//Icons
+//Start Arrow
+.start-arrow-main {
+    border: 1px solid black;
+    width: 60%;
+    height: 10%;
+    background-color: red;
+    margin: 20% 0% 0% 10%;
+}
+
+.start-arrow-top {
+    border: 1px solid black;
+    width: 25%;
+    height: 10%;
+    background-color: red;
+    margin: -14% 0% 0% 5%;
+    transform: rotate(-45deg);
+}
+.start-arrow-bottom{
+    border: 1px solid black;
+    width: 25%;
+    height: 10%;
+    background-color: red;
+    transform: rotate(45deg);
+    margin: 5% 0% 0% 5%;
+}
+
+.start-text{
+    margin-left: 5%;
+}
+
+//Jail
+.jail-main{
+    @include border;
+    height: 70%;
+    width: 70%;
+    margin: -1% 0% 0% 30%;
+    background-color: orange;
+}
+.jail-box{
+    height: 60%;
+    width: 75%;
+    @include border;
+    background-color: white;
+    margin: 15% 0% 0% 12%;
+    transform: rotate(35deg);
+}
+
+.jail-bar{
+    @include border;
+    background-color: grey;
+    height: 100%;
+    width: 10%;
+    float: left;
+    margin-left: 12%;
+}
+
+//Go to jail
+.go-jail-main{
+    @include border;
+    height: 70%;
+    width: 70%;
+    margin: 27% 0% 0% 0%;
+}
+
+//Parking
+.parking-main{
+    @include border;
+    height: 70%;
+    width: 70%;
+    margin: 29% 0% 0% 30%;
+}
