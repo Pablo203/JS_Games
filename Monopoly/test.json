@@ -1,8 +1,134 @@
 {
-    "persons": {
-        "name" : "Abdul"
-    },
-    "name" : "John",
-    "surname" : "Queen",
-    "age" : "30"
+    "property": {
+        "brown": {
+            "first": {
+                "name": "Meidter",
+                "value": "60"
+            },
+            "second": {
+                "name": "Baltic",
+                "value": "60"
+            }
+        },
+
+        "black": {
+            "S": {
+                "name": "Railroad S",
+                "value": "200"
+            },
+            "W": {
+                "name": "Railroad W",
+                "value": "200"
+            },
+            "N": {
+                "name": "Railroad N",
+                "value": "200"
+            },
+            "E": {
+                "name": "Railroad E",
+                "value": "200"
+            }
+        },
+
+        "lightblue" : {
+            "first": {
+                "name": "Oriental",
+                "value": "100"
+            },
+            "second": {
+                "name": "Vermont",
+                "value": "100"
+            },
+            "third": {
+                "name": "Connecticut",
+                "value": "120"
+            }
+        },
+
+        "pink" : {
+            "first": {
+                "name": "St. Charles Place",
+                "value": "140"
+            },
+            "second": {
+                "name": "States",
+                "value": "140"
+            },
+            "third": {
+                "name": "Virginia",
+                "value": "160"
+            }
+        },
+
+        "orange" : {
+            "first": {
+                "name": "St. JAmes Place",
+                "value": "180"
+            },
+            "second": {
+                "name": "Tennessee",
+                "value": "180"
+            },
+            "third": {
+                "name": "New York",
+                "value": "200"
+            }
+        },
+
+        "red" : {
+            "first": {
+                "name": "Kentucky",
+                "value": "220"
+            },
+            "second": {
+                "name": "Indiana",
+                "value": "220"
+            },
+            "third": {
+                "name": "Illinois",
+                "value": "240"
+            }
+        },
+
+        "yellow" : {
+            "first": {
+                "name": "Atlantic",
+                "value": "260"
+            },
+            "second": {
+                "name": "Ventnor",
+                "value": "260"
+            },
+            "third": {
+                "name": "Marvin",
+                "value": "280"
+            }
+        },
+
+        "green" : {
+            "first": {
+                "name": "Pacific",
+                "value": "300"
+            },
+            "second": {
+                "name": "North Carolina",
+                "value": "300"
+            },
+            "third": {
+                "name": "Pensylvania",
+                "value": "320"
+            }
+        },
+
+        "blue" : {
+            "first": {
+                "name": "Park Place",
+                "value": "350"
+            },
+            "second": {
+                "name": "Board Walk",
+                "value": "400"
+            }
+        }
+    }
 }
