@@ -15,7 +15,7 @@
         <div class="col-lg-2 side">
             <div class="player_1-tab">
                 <p class="player-name">Player 1</p>
-                <p class="player-balance">2 000 000$</p>
+                <p class="player-balance" id="balance_1"></p>
                 <p id="asd">a</p>
             </div>
         </div>
@@ -118,8 +118,8 @@
 
                     <div class="top-right-corner-field">
                         <div class="go-jail-main">Go to Jail</div>
-                        <div class="pawn-place-1-T" style="margin-top: -88%;" id="30a">a</div>
-                        <div class="pawn-place-2-T" style="margin-top: -88%;" id="30b">b</div>
+                        <div class="pawn-place-1-T" style="margin-top: -88%; width: 25%;" id="30a">a</div>
+                        <div class="pawn-place-2-T" style="margin-top: -88%; width: 25%;" id="30b">b</div>
                     </div>
 
                     <!-- Side Fields -->
@@ -134,13 +134,115 @@
 
                     </div>
 
+
+
                     <div class="inside-field">
+                        <!--Info Box Area Start-->
+                        <!--Field Info Area Start-->
+                        <div class="info-box" id="info">
+                            <div class="info-box-color" id="color">
+                            </div>
+                            <div class="info-box-name">
+                                <p class="info-box-title">
+                                    Name
+                                </p>
+                                <p class="info-box-text" id="title">
+                                    
+                                </p>
+                            </div>
+                            <div class="info-box-value">
+                                <p class="info-box-title">
+                                    Value
+                                </p>
+                                <p class="info-box-text" id="cost">
+                                    
+                                </p>
+                            </div>
+                            <div class="info-box-own">
+                                <p class="info-box-title">
+                                    Owner
+                                </p>
+                                <p class="info-box-text" id="own">
+                                    
+                                </p>
+                            </div>
+                            <button class="btn btn-success info-box-btn-action">Buy</button>
+                            <button class="btn btn-danger info-box-btn-pass" onclick="pass()">Pass turn</button>
+                        </div>
+                        <!--Field Info Area End-->
+
+                        <!--Chance Info Area Start-->
+                        <div class="chance-box" id="chance_box">
+                            <div class="chance-box-title" id="chance_box_title">
+                                <p class="chance-box-title-text" id="chance_title">
+                                    a
+                                </p>
+                            </div>
+                            <div class="chance-box-content" id="chance_box_content">
+                                <p class="chance-box-content-text" id="chance_content">
+                                    a
+                                </p>
+                            </div>
+                            <div class="chance-box-pass" id="chance_box_pass">
+                                <button class="btn btn-danger chance-box-btn-pass" onclick="pass()">
+                                    Pass
+                                </button>
+                            </div>
+                        </div>
+                        <!--Chance Info Area End-->
+
+                        <!--Chest Info Area Start-->
+                        <div class="chest-box" id="chest_box">
+                            <div class="chest-box-title" id="chest_box_title">
+                                <p class="chest-box-title-text" id="chest_title">
+                                    Community Chest
+                                </p>
+                            </div>
+                            <div class="chest-box-content" id="chest_box_content">
+                                <p class="chest-box-content-text" id="chest_content">
+                                    a
+                                </p>
+                            </div>
+                            <div class="chest-box-pass" id="chest_box_pass">
+                                <button class="btn btn-danger chest-box-btn-pass" onclick="pass()">
+                                    Pass
+                                </button>
+                            </div>
+                        </div>
+                        <!--Chest Info Area End-->
+
+                        <!--Tax Info Area Start-->
+                        <div class="tax-box" id="tax_box">
+                            <div class="tax-box-title" id="tax_box_title">
+                                <p class="tax-box-title-text" id="tax_title">
+                                    a
+                                </p>
+                            </div>
+                            <div class="tax-box-content" id="tax_box_content">
+                                <p class="tax-box-content-text" id="tax_content">
+                                    a
+                                </p>
+                            </div>
+                            <div class="tax-box-pass" id="tax_box_pass">
+                                <button class="btn btn-danger tax-box-btn-pass" onclick="pass()">
+                                    Pass
+                                </button>
+                            </div>
+                        </div>
+                        <!--Tax Info Area End-->
+
+                        <!--Info Box Area End-->
+                        <!--Center Box Area Start-->
+                        <div class="community" id="community_chest">community</div>
                         <p>
-                            <button class="btn-secondary" onclick="move()">
+                            <button class="btn buton btn-secondary" id="knefel" onclick="move()">
                                 Roll a Dice !!!!!!
                             </button>
                         </p>
+                        <div class="chance" id="ask">chance</div>
+                        <!--Center Box Area End-->
                     </div>
+
 
 
                     <div class="right-side-field">
@@ -402,8 +504,8 @@
                         <div class="start-arrow-main"></div>
                         <div class="start-arrow-top"></div>
                         <div class="start-arrow-bottom"></div>
-                        <div class="pawn-place-1-B" style="margin-top: 3%;" id="0a" data-field="start" data-pawn="a">a</div>
-                        <div class="pawn-place-2-B" style="margin-top: 3%;" id="0b" data-field="start" data-pawn="b">b</div>
+                        <div class="pawn-place-1-B" style="margin-top: 3%; width: 25%;" id="0a" data-field="start">a</div>
+                        <div class="pawn-place-2-B" style="margin-top: 3%; width: 25%;" id="0b" data-field="start" data-pawn="b">b</div>
                     </div>
 
                 </div>
@@ -413,7 +515,7 @@
         <div class="col-lg-2 side">
             <div class="player_2-tab">
                 <p class="player-name">Player 2</p>
-                <p class="player-balance">2 000 000$</p>
+                <p class="player-balance" id="balance_2"></p>
             </div>
         </div>
     </div>
