@@ -9,8 +9,8 @@ var chance_cards = ['17', '18', '19', '20', '21', '22', '23', '24', '25', '26', 
 var money_1 = 1500;
 var money_2 = 1500;
 var drop1, drop2;
-document.getElementById("balance_1").innerHTML = money_1;
-document.getElementById("balance_2").innerHTML = money_2;
+document.getElementById("money_1").innerHTML = money_1;
+document.getElementById("money_2").innerHTML = money_2;
 var field;
 var resultA = 0;
 var resultB = 0;
@@ -40,9 +40,9 @@ change = (arr) => {
 }
 //Setup Area End
 
-dice_throw = () =>{
-    drop1 = Math.floor(Math.random() * 6) + 1;
-    drop2 = Math.floor(Math.random() * 6) + 1;
+dice_throw = () => {
+    drop1 = Math.floor(Math.random() * 1) + 1;
+    drop2 = Math.floor(Math.random() * 1) + 1;
     return drop1, drop2;
 }
 
@@ -60,14 +60,14 @@ pass = () => {
 //Special Fields Operations
 
 
-show = (word) =>{
+show = (word) => {
     document.getElementById(word + "_box").style.display = "block";
     document.getElementById(word + "_box_title").style.display = "block";
     document.getElementById(word + "_box_content").style.display = "block";
     document.getElementById(word + "_box_pass").style.display = "block";
 }
 
-hide = (word) =>{
+hide = (word) => {
     document.getElementById(word + "_box").style.display = "none";
     document.getElementById(word + "_box_title").style.display = "none";
     document.getElementById(word + "_box_content").style.display = "none";
@@ -83,27 +83,27 @@ dataJSON = (id) => {
     const price = "value";
     const owned = "own";
     var number = id;
-    if(number != (0 || 10 || 20 || 30 || 7 || 22 || 36 || 2 || 17 || 33 || 4 ||38)){
-    fetch(file)
-        .then(x => x.text())
-        .then(y => JSON.parse(y))
-        .then(z => document.getElementById("color").style.backgroundColor = (z[prop][number][col]))
-    fetch(file)
-        .then(x => x.text())
-        .then(y => JSON.parse(y))
-        .then(z => document.getElementById("title").innerHTML = (z[prop][number][tag]))
-    fetch(file)
-        .then(x => x.text())
-        .then(y => JSON.parse(y))
-        .then(z => document.getElementById("cost").innerHTML = (z[prop][number][price]))
-    fetch(file)
-        .then(x => x.text())
-        .then(y => JSON.parse(y))
-        .then(z => document.getElementById("own").innerHTML = (z[prop][number][owned]))
+    if (number != (0 || 10 || 20 || 30 || 7 || 22 || 36 || 2 || 17 || 33 || 4 || 38)) {
+        fetch(file)
+            .then(x => x.text())
+            .then(y => JSON.parse(y))
+            .then(z => document.getElementById("color").style.backgroundColor = (z[prop][number][col]))
+        fetch(file)
+            .then(x => x.text())
+            .then(y => JSON.parse(y))
+            .then(z => document.getElementById("title").innerHTML = (z[prop][number][tag]))
+        fetch(file)
+            .then(x => x.text())
+            .then(y => JSON.parse(y))
+            .then(z => document.getElementById("cost").innerHTML = (z[prop][number][price]))
+        fetch(file)
+            .then(x => x.text())
+            .then(y => JSON.parse(y))
+            .then(z => document.getElementById("own").innerHTML = (z[prop][number][owned]))
     }
 }
 
-chestJSON = (element) =>{
+chestJSON = (element, cash, cash_2, turn) => {
     var file = "cards.json";
     var number = element;
     document.getElementById("chest_title").innerHTML = "Community Chest";
@@ -111,35 +111,132 @@ chestJSON = (element) =>{
         .then(x => x.text())
         .then(y => JSON.parse(y))
         .then(z => document.getElementById("chest_content").innerHTML = (z[number]))
+    //FUCKING BIG IF
     change(community_chest);
+    chest_action(cash, cash_2, number, turn);
+    return field;
+}
+
+chest_action = (cash, cash_2, number, turn) => {
+    console.log(turn);
+    var which = " "; 
+    var which1 = " ";
+    if(turn % 2 == 1){
+        which = "money_1";
+        which1 = "money_2";
+    }
+    else if(turn % 2 == 0){
+        which = "money_2";
+        which1 = "money_1";
+    }
+    console.log(which);
+    console.log(which1);
+    if (number == 1) {
+        console.log("1");
+        field = 0;
+    } else if (number == 2) {
+        console.log("2");
+        cash += 200;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 3) {
+        console.log("3");
+        cash -= 50;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 4) {
+        console.log("4");
+        cash += 50;
+        document.getElementById(which).innerHTML = cash
+    } else if (number == 5) {
+        console.log("5");
+
+    } else if (number == 6) {
+        console.log("6");
+
+    } else if (number == 7) {
+        console.log("7");
+        cash += 50;
+        cash_2 -= 50;
+        document.getElementById(which).innerHTML = cash;
+        document.getElementById(which1).innerHTML = cash_2;
+    } else if (number == 8) {
+        console.log("8");
+        cash += 100;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 9) {
+        console.log("9");
+        cash += 20;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 10) {
+        console.log("10");
+        cash += 10;
+        cash_2 -= 10;
+        document.getElementById(which).innerHTML = cash;
+        document.getElementById(which1).innerHTML = cash_2;
+    } else if (number == 11) {
+        console.log("11");
+        cash += 100;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 12) {
+        console.log("12");
+        cash -= 50;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 13) {
+        console.log("13");
+        cash -= 50;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 14) {
+        console.log("14");
+        cash += 25;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 15) {
+        console.log("15");
+
+    } else if (number == 16) {
+        console.log("16");
+        cash += 100;
+        document.getElementById(which).innerHTML = cash;
+    }
+    money_1 = cash;
+    money_2 = cash_2;
+}
+
+chanceJSON = (element) => {
+    var file = "cards.json";
+    var number = element;
+    document.getElementById("chance_title").innerHTML = "Chance";
+    fetch(file)
+        .then(x => x.text())
+        .then(y => JSON.parse(y))
+        .then(z => document.getElementById("chance_content").innerHTML = (z[number]))
+    change(chance_cards);
 }
 
 //Checking if field is special
-is_special = (field) =>{
-    if(field == 10){
+is_special = (field, player, player2, turn) => {
+    if (field == 10) {
         console.log("Prison Field");
-    }
-    else if(field == 20){
+    } else if (field == 20) {
         pass();
     }
     //Go to Jail 30
-    else if(field == 30){
+    else if (field == 30) {
         console.log("Go to jail");
     }
     /*else if(field == )*/
-    for(x in chances){
-        if(chances[x] == field){
+    for (x in chances) {
+        if (chances[x] == field) {
             show("chance");
+            chanceJSON(chance_cards[0], player, player2, turn);
         }
     }
-    for(x in chests){
-        if(chests[x] == field){
+    for (x in chests) {
+        if (chests[x] == field) {
             show("chest");
-            chestJSON(community_chest[0]);
+            chestJSON(community_chest[0], player, player2, turn);
         }
     }
-    for(x in taxes){
-        if(taxes[x] == field){
+    for (x in taxes) {
+        if (taxes[x] == field) {
             show("tax");
         }
     }
@@ -158,18 +255,20 @@ move = () => {
     //Checking who's turn it is
     if (turn % 2 == 1) {
         //Jumping through fields
-        for(let i = 0; i<drop; i++){
+        for (let i = 0; i < drop; i++) {
             resultA++;
             //If jumped field was Start add cash
-            if((resultA%39) == 0){
+            if ((resultA % 39) == 0) {
                 money_1 += 200;
-                document.getElementById("balance_1").innerHTML = money_1;
+                document.getElementById("money_1").innerHTML = money_1;
                 console.log("Start");
             }
         }
         field = resultA % 39;
         //If field is special taking action
-        is_special(field);
+        is_special(field, money_1, money_2, turn);
+        console.log(money_1);
+        console.log(money_2);
         //Pawn place change
         document.getElementById(field_id_A).style.backgroundColor = "#FFFFFF";
         field_id_A = field + "a";
@@ -178,26 +277,26 @@ move = () => {
             splice = 1;
         } else {
             splice = 2;
-        }       
+        }
         document.getElementById(field_id_A).style.backgroundColor = "#ca1a1a";
         var field_id = field_id_A.slice(0, splice);
         dataJSON(field_id);
-    } 
-    
-    else {
+    } else {
         //Jumping through fields
-        for(let i = 0; i<drop; i++){
+        for (let i = 0; i < drop; i++) {
             resultB++;
             //If jumped field was Start add cash
-            if((resultB%39) == 0){
+            if ((resultB % 39) == 0) {
                 money_2 += 200;
-                document.getElementById("balance_2").innerHTML = money_2;
+                document.getElementById("money_2").innerHTML = money_2;
                 console.log("Start");
             }
         }
         field = resultB % 39;
         //If field is special taking action
-        is_special(field);
+        is_special(field, money_2, money_1, turn);
+        console.log(money_1);
+        console.log(money_2);
         //Pawn place change
         document.getElementById(field_id_B).style.backgroundColor = "#FFFFFF";
         field_id_B = field + "b";
