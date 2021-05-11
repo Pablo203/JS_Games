@@ -4,6 +4,32 @@
   width: 100%;
 }
 
+.buton {
+  position: relative;
+  margin-left: 35%;
+  margin-top: 10%;
+  transform: rotate(-45deg);
+  display: inline;
+}
+
+.community {
+  border: 1px solid black;
+  height: 20%;
+  width: 30%;
+  transform: rotate(-45deg);
+  margin: 12% 0% 0% 5%;
+  display: block;
+}
+
+.chance {
+  border: 1px solid black;
+  height: 20%;
+  width: 30%;
+  transform: rotate(-45deg);
+  margin: 12% 0% 0% 65%;
+  display: block;
+}
+
 .board-outer {
   height: 116%;
   width: 80%;
@@ -401,4 +427,243 @@
   height: 70%;
   width: 70%;
   margin: 29% 0% 0% 30%;
+}
+
+.info-box {
+  border: 1px solid black;
+  height: 65%;
+  width: 50%;
+  position: absolute;
+  margin-top: 2.5%;
+  margin-left: 2%;
+  background-color: white;
+  display: none;
+}
+
+.info-box-color {
+  border: 1px solid black;
+  width: 100%;
+  height: 20%;
+}
+
+.info-box-name {
+  border: 1px solid black;
+  width: 100%;
+  height: 15%;
+  margin-top: 5%;
+}
+
+.info-box-value {
+  border: 1px solid black;
+  width: 100%;
+  height: 15%;
+  margin-top: 5%;
+}
+
+.info-box-own {
+  border: 1px solid black;
+  width: 100%;
+  height: 15%;
+  margin-top: 5%;
+}
+
+.info-box-title {
+  border: 1px solid black;
+  height: 100%;
+  width: 20%;
+  display: inline;
+  font-size: 35px;
+}
+
+.info-box-text {
+  border: 1px solid black;
+  width: 70%;
+  height: 100%;
+  display: inline;
+}
+
+.info-box-btn-action {
+  width: 20%;
+  height: 10%;
+  margin: 2.5% 0% 0% 15%;
+}
+
+.info-box-btn-pass {
+  width: 20%;
+  height: 10%;
+  margin: 2.5% 0% 0% 30%;
+}
+
+.chance-box {
+  border: 1px solid black;
+  height: 65%;
+  width: 50%;
+  position: absolute;
+  margin-top: 2.5%;
+  margin-left: 2%;
+  background-color: white;
+  display: none;
+}
+
+.chance-box-title {
+  border: 1px solid black;
+  width: 100%;
+  height: 20%;
+  display: none;
+  position: absolute;
+}
+
+.chance-box-content {
+  border: 1px solid black;
+  width: 100%;
+  height: 60%;
+  display: none;
+  position: absolute;
+  margin-top: 16.5%;
+}
+
+.chance-box-pass {
+  border: 1px solid black;
+  width: 100%;
+  height: 20%;
+  display: none;
+  position: absolute;
+  margin-top: 66.7%;
+}
+
+.chance-box-btn-pass {
+  height: 50%;
+  width: 20%;
+  margin: 4% 0% 0% 40%;
+}
+
+.chance-box-title-text {
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+}
+
+.chance-box-content-text {
+  border: 1px solid black;
+  height: 80%;
+  width: 85%;
+  margin: 5% 0% 0% 7%;
+}
+
+.chest-box {
+  border: 1px solid black;
+  height: 65%;
+  width: 50%;
+  position: absolute;
+  margin-top: 2.5%;
+  margin-left: 2%;
+  background-color: white;
+  display: none;
+}
+
+.chest-box-title {
+  border: 1px solid black;
+  width: 100%;
+  height: 20%;
+  display: none;
+  position: absolute;
+}
+
+.chest-box-content {
+  border: 1px solid black;
+  width: 100%;
+  height: 60%;
+  display: none;
+  position: absolute;
+  margin-top: 16.5%;
+}
+
+.chest-box-pass {
+  border: 1px solid black;
+  width: 100%;
+  height: 20%;
+  display: none;
+  position: absolute;
+  margin-top: 66.7%;
+}
+
+.chest-box-btn-pass {
+  height: 50%;
+  width: 20%;
+  margin: 4% 0% 0% 40%;
+}
+
+.chest-box-title-text {
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+}
+
+.chest-box-content-text {
+  border: 1px solid black;
+  height: 80%;
+  width: 85%;
+  margin: 5% 0% 0% 7%;
+}
+
+.tax-box {
+  border: 1px solid black;
+  height: 65%;
+  width: 50%;
+  position: absolute;
+  margin-top: 2.5%;
+  margin-left: 2%;
+  background-color: white;
+  display: none;
+}
+
+.tax-box-title {
+  border: 1px solid black;
+  width: 100%;
+  height: 20%;
+  display: none;
+  position: absolute;
+}
+
+.tax-box-content {
+  border: 1px solid black;
+  width: 100%;
+  height: 60%;
+  display: none;
+  position: absolute;
+  margin-top: 16.5%;
+}
+
+.tax-box-pass {
+  border: 1px solid black;
+  width: 100%;
+  height: 20%;
+  display: none;
+  position: absolute;
+  margin-top: 66.7%;
+}
+
+.tax-box-btn-pass {
+  height: 50%;
+  width: 20%;
+  margin: 4% 0% 0% 40%;
+}
+
+.tax-box-title-text {
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+}
+
+.tax-box-content-text {
+  border: 1px solid black;
+  height: 80%;
+  width: 85%;
+  margin: 5% 0% 0% 7%;
 }
