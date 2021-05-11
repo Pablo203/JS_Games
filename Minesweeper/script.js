@@ -28,7 +28,7 @@ board = (mode) => {
     //Wyświetlenie odpowiedniej liczby pól  i = kolumny, j = rzędy
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
-            document.getElementById("mine").innerHTML += "<button class='field btn-light' id='[" + j + " ," + i + "]' onclick='console.log(this.id);  field_check(this.id);' style='font-size:" + text_size + "px; font-weight: bold;'>[" + j + " ," + i + "]</button>";
+            document.getElementById("mine").innerHTML += "<button class='field btn-light' id='[" + j + " ," + i + "]' onclick='field_check(this.id);' style='font-size:" + text_size + "px; font-weight: bold;'>[" + j + " ," + i + "]</button>";
             //Wpisanie wartości indeksu do tablicy
             fields_id[fields_id_help] = "[" + j + " ," + i + "]";
             fields_id_help++;
@@ -42,9 +42,7 @@ bombs = (much) => {
     var made_field = [];
     var used = 0;
     bomb_number = much;
-    console.log(to_win);
     to_win -= bomb_number;
-    console.log(to_win);
 
     //Wykonywanie pętli tyle razy ile jest bomb
     for (let i = 0; i < bomb_number; i++) {
@@ -160,12 +158,11 @@ field_check = (ID) => {
         }
     } else {
         //Jeśli nie ma bomby zmienia kolor na zielony i wyłącza pole
-        var field_good_color = document.getElementById(ID).style = "background-color: #79ff74;";
+        document.getElementById(ID).style = "background-color: #79ff74;";
         document.getElementById(ID).disabled = true;
         bombs_nearby(ID);
     }
     clear++;
-    console.log(clear);
     win();
     return clear;
 }
