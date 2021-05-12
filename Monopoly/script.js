@@ -32,15 +32,13 @@ shuffleArray = (array) => {
 shuffleArray(community_chest);
 shuffleArray(chance_cards);
 console.log(community_chest);
-console.log(chance_cards);
-
 change = (arr) => {
     var temp = arr.shift();
     arr.push(temp);
 }
 //Setup Area End
 
-dice_throw = () => {
+diceThrow = () => {
     drop1 = Math.floor(Math.random() * 1) + 1;
     drop2 = Math.floor(Math.random() * 1) + 1;
     return drop1, drop2;
@@ -103,37 +101,21 @@ dataJSON = (id) => {
     }
 }
 
-chestJSON = (element, cash, cash_2, turn) => {
-    var file = "cards.json";
-    var number = element;
-    document.getElementById("chest_title").innerHTML = "Community Chest";
-    fetch(file)
-        .then(x => x.text())
-        .then(y => JSON.parse(y))
-        .then(z => document.getElementById("chest_content").innerHTML = (z[number]))
-    //FUCKING BIG IF
-    change(community_chest);
-    chest_action(cash, cash_2, number, turn);
-    return field;
-}
-
 chest_action = (cash, cash_2, number, turn) => {
-    console.log(turn);
-    var which = " "; 
+    var which = " ";
     var which1 = " ";
-    if(turn % 2 == 1){
+    if (turn % 2 == 1) {
         which = "money_1";
         which1 = "money_2";
-    }
-    else if(turn % 2 == 0){
+    } else if (turn % 2 == 0) {
         which = "money_2";
         which1 = "money_1";
     }
-    console.log(which);
-    console.log(which1);
     if (number == 1) {
         console.log("1");
         field = 0;
+        cash += 200;
+        document.getElementById(which).innerHTML = cash;
     } else if (number == 2) {
         console.log("2");
         cash += 200;
@@ -199,8 +181,24 @@ chest_action = (cash, cash_2, number, turn) => {
     money_1 = cash;
     money_2 = cash_2;
 }
+//Chests cards Actions
+chestJSON = (element, cash, cash_2, turn) => {
+    var file = "cards.json";
+    var number = element;
+    document.getElementById("chest_title").innerHTML = "Community Chest";
+    fetch(file)
+        .then(x => x.text())
+        .then(y => JSON.parse(y))
+        .then(z => document.getElementById("chest_content").innerHTML = (z[number]))
+    //FUCKING BIG IF
+    change(community_chest);
+    chest_action(cash, cash_2, number, turn);
+}
 
-chanceJSON = (element) => {
+
+
+//Chance Cards Actions
+chanceJSON = (element, cash, cash_2, turn) => {
     var file = "cards.json";
     var number = element;
     document.getElementById("chance_title").innerHTML = "Chance";
@@ -208,11 +206,81 @@ chanceJSON = (element) => {
         .then(x => x.text())
         .then(y => JSON.parse(y))
         .then(z => document.getElementById("chance_content").innerHTML = (z[number]))
-    change(chance_cards);
+    //FUCKING BIG IF
+    change(community_chest);
+    chance_action(cash, cash_2, number, turn);
+    console.log(field);
+}
+
+chance_action = (cash, cash_2, number, turn) => {
+    var which = " ";
+    var which1 = " ";
+    if (turn % 2 == 1) {
+        which = "money_1";
+        which1 = "money_2";
+    } else if (turn % 2 == 0) {
+        which = "money_2";
+        which1 = "money_1";
+    }
+    if (number == 17) {
+        console.log("17");
+        field = 0;
+        cash += 200;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 18) {
+        console.log("18");
+
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 19) {
+        console.log("19");
+
+    } else if (number == 20) {
+        console.log("20");
+
+    } else if (number == 21) {
+        console.log("21");
+
+    } else if (number == 22) {
+        console.log("22");
+        cash += 50;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 23) {
+        console.log("23");
+    } else if (number == 24) {
+        console.log("24");
+    } else if (number == 25) {
+        console.log("25");
+    } else if (number == 26) {
+        console.log("26");
+    } else if (number == 27) {
+        console.log("27");
+        cash -= 15;
+        document.getElementById(which).innerHTML = cash;
+    } else if (number == 28) {
+        console.log("28");
+    } else if (number == 29) {
+        console.log("29");
+    } else if (number == 30) {
+        console.log("30");
+        cash -= 50;
+        cash_2 += 50;
+        document.getElementById(which).innerHTML = cash;
+        document.getElementById(which).innerHTML = cash_2;
+    } else if (number == 31) {
+        console.log("31");
+        cash += 150;
+    } else if (number == 32) {
+        console.log("32");
+        cash += 100;
+        document.getElementById(which).innerHTML = cash;
+    }
+    money_1 = cash;
+    money_2 = cash_2;
+    console.log(field);
 }
 
 //Checking if field is special
-is_special = (field, player, player2, turn) => {
+is_special = (field, player, player2, result, turn) => {
     if (field == 10) {
         console.log("Prison Field");
     } else if (field == 20) {
@@ -232,7 +300,7 @@ is_special = (field, player, player2, turn) => {
     for (x in chests) {
         if (chests[x] == field) {
             show("chest");
-            chestJSON(community_chest[0], player, player2, turn);
+            chestJSON(community_chest[0], player, player2, result, turn);
         }
     }
     for (x in taxes) {
@@ -249,7 +317,7 @@ move = () => {
     document.getElementById("knefel").style.display = "none";
     document.getElementById("ask").style.display = "none";
     document.getElementById("info").style.display = "block";
-    dice_throw();
+    diceThrow();
     //Showing two dices results
     drop = drop1 + drop2;
     //Checking who's turn it is
@@ -261,14 +329,11 @@ move = () => {
             if ((resultA % 39) == 0) {
                 money_1 += 200;
                 document.getElementById("money_1").innerHTML = money_1;
-                console.log("Start");
             }
         }
         field = resultA % 39;
         //If field is special taking action
         is_special(field, money_1, money_2, turn);
-        console.log(money_1);
-        console.log(money_2);
         //Pawn place change
         document.getElementById(field_id_A).style.backgroundColor = "#FFFFFF";
         field_id_A = field + "a";
@@ -289,14 +354,11 @@ move = () => {
             if ((resultB % 39) == 0) {
                 money_2 += 200;
                 document.getElementById("money_2").innerHTML = money_2;
-                console.log("Start");
             }
         }
         field = resultB % 39;
         //If field is special taking action
-        is_special(field, money_2, money_1, turn);
-        console.log(money_1);
-        console.log(money_2);
+        is_special(field, money_2, money_1, resultB, turn);
         //Pawn place change
         document.getElementById(field_id_B).style.backgroundColor = "#FFFFFF";
         field_id_B = field + "b";
