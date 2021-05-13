@@ -3,7 +3,7 @@
 html{
     scroll-behavior: smooth;
     overflow-x: hidden;
-
+    overflow-y: hidden;
 }
 
 .side{
@@ -15,6 +15,7 @@ html{
     background-color: $player-1;
     height: 50%;
     width: 100%;
+    margin-left: 3%;
 }
 
 .player_2-tab{
@@ -38,10 +39,30 @@ html{
 .player-name{
     font-size: 30px;
     font-weight: bold;
+    color: white;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
 }
 
-.player-balance{
+.player-1-balance{
     font-size: 30px;
+    border: 5px ridge $player-1;
+    background-color: #dbdbdb;
+    text-align: center;
+    margin-top: -7%;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.player-2-balance{
+    font-size: 30px;
+    border: 5px ridge $player-2;
+    background-color: #dbdbdb;
+    text-align: center;
+    margin-top: -7%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 .player-1{
@@ -51,4 +72,92 @@ html{
     width: 50%;
     margin-top: 25%;
     margin-left: 25%;
+}
+
+//Properties Cards Area
+.player-1-prop{
+    height: 60%;
+    width: 90%;
+    margin-left: 5%;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+.prop-area-p1{
+    border: 1px solid black;
+    display: grid;
+    grid-template-rows: repeat(1, 100%);
+    grid-template-columns: repeat(5, 20%);
+}
+
+.rail-4-cards{
+    height: 90%;
+    width: 90%;
+    border: 1px solid black;
+    margin: 10% 0% 0% 5%;
+}
+
+.rail-4-cards-head-top{
+    border: 1px solid black;
+    width: 100%;
+    height: 12.5%;
+    background-color: grey;
+}
+
+.rail-4-cards-head{
+    border: 1px solid black;
+    width: 100%;
+    height: 12.5%;
+    background-color: grey;
+    margin-top: 10%;
+}
+
+.prop-3-cards{
+    border: 1px solid black;
+    height: 70%;
+    width: 90%;
+    margin: 10% 0% 0% 5%;
+}
+
+.prop-3-cards-head-top{
+    border: 1px solid black;
+    height: 15%;
+    width: 102%;
+    margin-left: -1%;
+    background-color: grey;
+}
+
+.prop-3-cards-head{
+    border: 1px solid black;
+    height: 15%;
+    width: 102%;
+    margin-top: 12.5%;
+    margin-left: -1%;
+    background-color: grey;
+}
+
+.prop-2-cards{
+    height: 50%;
+    width: 90%;
+    border: 1px solid black;
+    margin: 10% 0% 0% 5%;
+}
+
+.prop-2-cards-head-top{
+    border: 1px solid black;
+    height: 15%;
+    width: 102%;
+    margin-left: -1%;
+    background-color: grey;
+}
+
+.prop-2-cards-head{
+    border: 1px solid black;
+    height: 15%;
+    width: 102%;
+    margin-left: -1%;
+    margin-top: 20%;
+    background-color: grey;
 }

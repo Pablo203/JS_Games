@@ -1,25 +1,42 @@
-//http://ministranciniewiadom.99e.pl/JS_Games/Monopoly/index.html
-//Setup Area Start
-var special = [0, 10, 20, 30];
-var chances = [7, 22, 36];
-var chests = [2, 17, 33];
-var taxes = [4, 38];
-var community_chest = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
-var chance_cards = ['17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32'];
-var money_1 = 1500;
-var money_2 = 1500;
-var drop1, drop2;
-document.getElementById("money_1").innerHTML = money_1;
-document.getElementById("money_2").innerHTML = money_2;
-var field;
-var resultA = 0;
-var resultB = 0;
-var field_id_A = "0a";
-var field_id_B = "0b";
-var turn = 1;
+var players = {
+    "player1": {
+        "PlayerName": "Gracz1",
+        "PlayerCash": 1500,
+        "result": 0,
+        "field": 0,
+        "houses": 0,
+        "hotels": 0
+    },
+    "player2": {
+        "PlayerName": "Gracz2",
+        "PlayerCash": 1500,
+        "result": 0,
+        "field": 0,
+        "houses": 0,
+        "hotels": 0
+    }
+}
+
+var gamesData = {
+    "turn": 1,
+    "drop": {
+        "1": 0,
+        "2": 0,
+        "sum": 0
+    },
+    "field_Id": {
+        "A": "0a",
+        "B": "0b"
+    }
+}
+
+var dropTogether = 0;
 var splice = 1;
-document.getElementById(field_id_A).style.backgroundColor = "#ca1a1a";
-document.getElementById(field_id_B).style.backgroundColor = "#33b6df";
+//Functions Setup Area
+diceThrow = () => {
+    gamesData["drop"]["1"] = Math.floor(Math.random() * 1) + 3;
+    gamesData["drop"]["2"] = Math.floor(Math.random() * 1) + 4;
+}
 
 shuffleArray = (array) => {
     for (var i = array.length - 1; i > 0; i--) {
@@ -29,22 +46,13 @@ shuffleArray = (array) => {
         array[j] = temp;
     }
 }
-shuffleArray(community_chest);
-shuffleArray(chance_cards);
-console.log(community_chest);
-change = (arr) => {
+
+firstCardToLast = (arr) => {
     var temp = arr.shift();
     arr.push(temp);
 }
-//Setup Area End
 
-diceThrow = () => {
-    drop1 = Math.floor(Math.random() * 1) + 1;
-    drop2 = Math.floor(Math.random() * 1) + 1;
-    return drop1, drop2;
-}
-
-//Passing turn Function
+//Passing turn
 pass = () => {
     document.getElementById("community_chest").style.display = "block";
     document.getElementById("knefel").style.display = "block";
@@ -56,8 +64,6 @@ pass = () => {
 }
 
 //Special Fields Operations
-
-
 show = (word) => {
     document.getElementById(word + "_box").style.display = "block";
     document.getElementById(word + "_box_title").style.display = "block";
@@ -72,305 +78,376 @@ hide = (word) => {
     document.getElementById(word + "_box_pass").style.display = "none";
 }
 
-//If field is property fetching data and displaying it
-dataJSON = (id) => {
-    var file = "data.json";
-    const prop = "property";
-    const col = "color";
-    const tag = "name";
-    const price = "value";
-    const owned = "own";
-    var number = id;
-    if (number != (0 || 10 || 20 || 30 || 7 || 22 || 36 || 2 || 17 || 33 || 4 || 38)) {
-        fetch(file)
-            .then(x => x.text())
-            .then(y => JSON.parse(y))
-            .then(z => document.getElementById("color").style.backgroundColor = (z[prop][number][col]))
-        fetch(file)
-            .then(x => x.text())
-            .then(y => JSON.parse(y))
-            .then(z => document.getElementById("title").innerHTML = (z[prop][number][tag]))
-        fetch(file)
-            .then(x => x.text())
-            .then(y => JSON.parse(y))
-            .then(z => document.getElementById("cost").innerHTML = (z[prop][number][price]))
-        fetch(file)
-            .then(x => x.text())
-            .then(y => JSON.parse(y))
-            .then(z => document.getElementById("own").innerHTML = (z[prop][number][owned]))
-    }
+//Setup Area
+//Wyświetlenie początkowego stanu gotówki
+document.getElementById("money_1").innerHTML = players["player1"]["PlayerCash"];
+document.getElementById("money_2").innerHTML = players["player2"]["PlayerCash"];
+//Wyświetlenie początkowej lokalizacji pionków
+document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#ca1a1a";
+document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#33b6df";
+//Przetasowanie talii
+shuffleArray(specialCards["chest"]);
+//shuffleArray(specialCards["chance"]);
+
+chestGet = () => {
+    let x = (specialCards["chest"])[0];
+    document.getElementById("chest_title").innerHTML = "Community Chest";
+    document.getElementById("chest_content").innerHTML = (specialCards["cards"])[x];
+    console.log((specialCards["cards"])[x]);
+    chest_action();
+    firstCardToLast(specialCards["chest"]);
 }
 
-chest_action = (cash, cash_2, number, turn) => {
+chest_action = () => {
+    //Local variables Setup
     var which = " ";
     var which1 = " ";
+    var who = "";
+    var turn = gamesData["turn"];
+    var number = (specialCards["chest"])[0];
+    var mark = "";
+    var color = "";
+    console.log(turn + " turn");
+    //Local variables setup 2
     if (turn % 2 == 1) {
         which = "money_1";
         which1 = "money_2";
+        who = "player" + 1;
+        who2 = "player" + 2;
+        mark = "A";
+        mark2 = "a";
+        color = "#ca1a1a";
     } else if (turn % 2 == 0) {
         which = "money_2";
         which1 = "money_1";
+        who = "player" + 2;
+        who2 = "player" + 1;
+        mark = "B";
+        mark2 = "b";
+        color = "#33b6df";
     }
+    //Cards actions
     if (number == 1) {
         console.log("1");
-        field = 0;
-        cash += 200;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["result"] = 0;
+        players[who]["PlayerCash"] += 200;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+        players[who]["field"] = players[who]["result"];
+        gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+
     } else if (number == 2) {
         console.log("2");
-        cash += 200;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] += 200;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 3) {
         console.log("3");
-        cash -= 50;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] -= 50;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 4) {
         console.log("4");
-        cash += 50;
-        document.getElementById(which).innerHTML = cash
+        players[who]["PlayerCash"] += 50;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 5) {
         console.log("5");
 
+
     } else if (number == 6) {
         console.log("6");
+        players[who]["result"] = 10;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+        players[who]["field"] = players[who]["result"];
+        gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
 
     } else if (number == 7) {
         console.log("7");
-        cash += 50;
-        cash_2 -= 50;
-        document.getElementById(which).innerHTML = cash;
-        document.getElementById(which1).innerHTML = cash_2;
+        players[who]["PlayerCash"] += 50;
+        players[who2]["PlayerCash"] -= 50;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+        document.getElementById(which1).innerHTML = players[who2]["PlayerCash"];
+
     } else if (number == 8) {
         console.log("8");
-        cash += 100;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] += 100;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 9) {
         console.log("9");
-        cash += 20;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] += 20;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 10) {
         console.log("10");
-        cash += 10;
-        cash_2 -= 10;
-        document.getElementById(which).innerHTML = cash;
-        document.getElementById(which1).innerHTML = cash_2;
+        players[who]["PlayerCash"] += 10;
+        players[who2]["PlayerCash"] -= 10;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+        document.getElementById(which1).innerHTML = players[who2]["PlayerCash"];
+
     } else if (number == 11) {
         console.log("11");
-        cash += 100;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] += 100;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 12) {
         console.log("12");
-        cash -= 50;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] -= 50;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 13) {
         console.log("13");
-        cash -= 50;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] -= 50;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 14) {
         console.log("14");
-        cash += 25;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] += 25;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 15) {
         console.log("15");
+        let to_pay = (players[who]["houses"] * 40) + (players[who]["hotels"] * 115);
+        players[who]["PlayerCash"] -= to_pay;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+        console.log(to_pay);
 
     } else if (number == 16) {
         console.log("16");
-        cash += 100;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] += 100;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     }
-    money_1 = cash;
-    money_2 = cash_2;
-}
-//Chests cards Actions
-chestJSON = (element, cash, cash_2, turn) => {
-    var file = "cards.json";
-    var number = element;
-    document.getElementById("chest_title").innerHTML = "Community Chest";
-    fetch(file)
-        .then(x => x.text())
-        .then(y => JSON.parse(y))
-        .then(z => document.getElementById("chest_content").innerHTML = (z[number]))
-    //FUCKING BIG IF
-    change(community_chest);
-    chest_action(cash, cash_2, number, turn);
 }
 
-
-
-//Chance Cards Actions
-chanceJSON = (element, cash, cash_2, turn) => {
-    var file = "cards.json";
-    var number = element;
+chanceGet = () => {
+    let x = (specialCards["chance"])[0];
     document.getElementById("chance_title").innerHTML = "Chance";
-    fetch(file)
-        .then(x => x.text())
-        .then(y => JSON.parse(y))
-        .then(z => document.getElementById("chance_content").innerHTML = (z[number]))
-    //FUCKING BIG IF
-    change(community_chest);
-    chance_action(cash, cash_2, number, turn);
-    console.log(field);
+    document.getElementById("chance_content").innerHTML = (specialCards["cards"])[x];
+    console.log((specialCards["cards"])[x]);
+    chance_action();
+    firstCardToLast(specialCards["chance"]);
 }
 
-chance_action = (cash, cash_2, number, turn) => {
+chance_action = () => {
+    //Local variables Setup
     var which = " ";
     var which1 = " ";
+    var who = "";
+    var turn = gamesData["turn"];
+    var number = (specialCards["chance"])[0];
+    var mark = "";
+    var color = "";
+    console.log(turn + " turn");
+    //Local variables setup 2
     if (turn % 2 == 1) {
         which = "money_1";
         which1 = "money_2";
+        who = "player" + 1;
+        who2 = "player" + 2;
+        mark = "A";
+        mark2 = "a";
+        color = "#ca1a1a";
     } else if (turn % 2 == 0) {
         which = "money_2";
         which1 = "money_1";
+        who = "player" + 2;
+        who2 = "player" + 1;
+        mark = "B";
+        mark2 = "b";
+        color = "#33b6df";
     }
+    //Cards actions
     if (number == 17) {
         console.log("17");
-        field = 0;
-        cash += 200;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["result"] = 0;
+        players[who]["PlayerCash"] += 200;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+        players[who]["field"] = players[who]["result"];
+        gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+
     } else if (number == 18) {
         console.log("18");
+        players[who]["result"] = 24;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+        players[who]["field"] = players[who]["result"];
+        gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
 
-        document.getElementById(which).innerHTML = cash;
     } else if (number == 19) {
         console.log("19");
+        players[who]["result"] = 11;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+        players[who]["field"] = players[who]["result"];
+        gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
 
     } else if (number == 20) {
         console.log("20");
+        
 
     } else if (number == 21) {
         console.log("21");
 
+
     } else if (number == 22) {
         console.log("22");
-        cash += 50;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] += 50;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 23) {
         console.log("23");
+        players[who]["PlayerCash"] += 50;
+        players[who2]["PlayerCash"] -= 50;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+        document.getElementById(which1).innerHTML = players[who2]["PlayerCash"];
+
     } else if (number == 24) {
         console.log("24");
+        players[who]["result"] -= 3;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+        players[who]["field"] = players[who]["result"];
+        gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+
     } else if (number == 25) {
         console.log("25");
+        players[who]["result"] = 10;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+        players[who]["field"] = players[who]["result"];
+        gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+
     } else if (number == 26) {
-        console.log("26");
+        let to_pay = (players[who]["houses"] * 25) + (players[who]["hotels"] * 100);
+        players[who]["PlayerCash"] -= to_pay;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+        console.log(to_pay);
+
     } else if (number == 27) {
         console.log("27");
-        cash -= 15;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] -= 15;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 28) {
         console.log("28");
+        players[who]["result"] = 5;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+        players[who]["field"] = players[who]["result"];
+        gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+
     } else if (number == 29) {
         console.log("29");
+        players[who]["result"] = 39;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+        players[who]["field"] = players[who]["result"];
+        gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+
     } else if (number == 30) {
         console.log("30");
-        cash -= 50;
-        cash_2 += 50;
-        document.getElementById(which).innerHTML = cash;
-        document.getElementById(which).innerHTML = cash_2;
+        players[who]["PlayerCash"] -= 50;
+        players[who2]["PlayerCash"] += 50;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+        document.getElementById(which1).innerHTML = players[who2]["PlayerCash"];
+
     } else if (number == 31) {
         console.log("31");
-        cash += 150;
+        players[who]["PlayerCash"] += 150;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     } else if (number == 32) {
         console.log("32");
-        cash += 100;
-        document.getElementById(which).innerHTML = cash;
+        players[who]["PlayerCash"] += 100;
+        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+
     }
-    money_1 = cash;
-    money_2 = cash_2;
-    console.log(field);
 }
 
-//Checking if field is special
-is_special = (field, player, player2, result, turn) => {
-    if (field == 10) {
+is_special = (player_who) => {
+    //Checking if field is in any corner. If not takes every element from arrays and compare it with actual field
+    if (players[player_who]["field"] == 10) {
         console.log("Prison Field");
-    } else if (field == 20) {
+    } else if (players[player_who]["field"] == 20) {
         pass();
     }
     //Go to Jail 30
-    else if (field == 30) {
+    else if (players[player_who]["field"] == 30) {
         console.log("Go to jail");
     }
     /*else if(field == )*/
-    for (x in chances) {
-        if (chances[x] == field) {
+    for (x in specialCards["fields"]["chances"]) {
+        if (specialCards["fields"]["chances"][x] == players[player_who]["field"]) {
             show("chance");
-            chanceJSON(chance_cards[0], player, player2, turn);
+            chanceGet();
         }
     }
-    for (x in chests) {
-        if (chests[x] == field) {
+    for (x in specialCards["fields"]["chests"]) {
+        if ((specialCards["fields"]["chests"])[x] == players[player_who]["field"]) {
             show("chest");
-            chestJSON(community_chest[0], player, player2, result, turn);
+            chestGet();
         }
     }
-    for (x in taxes) {
-        if (taxes[x] == field) {
+    for (x in specialCards["fields"]["taxes"]) {
+        if ((specialCards["fields"]["taxes"])[x] == players[player_who]["field"]) {
             show("tax");
         }
     }
 }
 
-//Turn function
 move = () => {
-    //Middle box change
+    //Dissapearing middle box and shows info box 
     document.getElementById("community_chest").style.display = "none";
     document.getElementById("knefel").style.display = "none";
     document.getElementById("ask").style.display = "none";
     document.getElementById("info").style.display = "block";
+    //Throwing dice and summing it
     diceThrow();
-    //Showing two dices results
-    drop = drop1 + drop2;
-    //Checking who's turn it is
-    if (turn % 2 == 1) {
-        //Jumping through fields
-        for (let i = 0; i < drop; i++) {
-            resultA++;
-            //If jumped field was Start add cash
-            if ((resultA % 39) == 0) {
-                money_1 += 200;
-                document.getElementById("money_1").innerHTML = money_1;
+    gamesData["drop"]["sum"] = gamesData["drop"]["1"] + gamesData["drop"]["2"];
+    dropTogether = gamesData["drop"]["sum"];
+    //Tells whos player turn it is depending on turn % 2
+    if (gamesData["turn"] % 2 == 1) {
+        //Jumping through fields and if field id = 0 (start) adding money
+        for (let i = 0; i < dropTogether; i++) {
+            players["player1"]["result"]++;
+            if ((players["player1"]["result"] % 39) == 0) {
+                players["player1"]["PlayerCash"] += 200;
+                document.getElementById("money_1").innerHTML = players["player1"]["PlayerCash"];
             }
         }
-        field = resultA % 39;
-        //If field is special taking action
-        is_special(field, money_1, money_2, turn);
-        //Pawn place change
-        document.getElementById(field_id_A).style.backgroundColor = "#FFFFFF";
-        field_id_A = field + "a";
-        //Substracting id number from whole id
-        if (field < 10) {
-            splice = 1;
-        } else {
-            splice = 2;
-        }
-        document.getElementById(field_id_A).style.backgroundColor = "#ca1a1a";
-        var field_id = field_id_A.slice(0, splice);
-        dataJSON(field_id);
-    } else {
-        //Jumping through fields
-        for (let i = 0; i < drop; i++) {
-            resultB++;
-            //If jumped field was Start add cash
-            if ((resultB % 39) == 0) {
-                money_2 += 200;
-                document.getElementById("money_2").innerHTML = money_2;
+        //Adds result from jumping to field and dissapears pawn from previous place
+        players["player1"]["field"] = (players["player1"]["result"]) % 39;
+        document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#FFFFFF";
+        //Gets new field id and showing pawn
+        gamesData["field_Id"]["A"] = players["player1"]["field"] + "a";
+        document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#ca1a1a";
+
+        is_special("player1");
+
+        gamesData["turn"]++;
+    } else if (gamesData["turn"] % 2 == 0) {
+        //Jumping through fields and if field id = 0 (start) adding money
+        for (let i = 0; i < dropTogether; i++) {
+            players["player2"]["result"]++;
+            if ((players["player2"]["result"] % 39) == 0) {
+                players["player2"]["PlayerCash"] += 200;
+                document.getElementById("money_2").innerHTML = players["player2"]["PlayerCash"];
             }
         }
-        field = resultB % 39;
-        //If field is special taking action
-        is_special(field, money_2, money_1, resultB, turn);
-        //Pawn place change
-        document.getElementById(field_id_B).style.backgroundColor = "#FFFFFF";
-        field_id_B = field + "b";
-        //Substracting id number from whole id
-        if (field < 10) {
-            splice = 1;
-        } else {
-            splice = 2;
-        }
-        document.getElementById(field_id_B).style.backgroundColor = "#33b6df";
-        var field_id = field_id_B.slice(0, splice);
-        dataJSON(field_id);
+        //Adds result from jumping to field and dissapears pawn from previous place
+        players["player2"]["field"] = (players["player2"]["result"]) % 39;
+        document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#FFFFFF";
+        //Gets new field id and showing pawn
+        gamesData["field_Id"]["B"] = players["player2"]["field"] + "b";
+        document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#33b6df";
+
+        is_special("player2");
+        gamesData["turn"]++;
     }
-    turn++;
 }
