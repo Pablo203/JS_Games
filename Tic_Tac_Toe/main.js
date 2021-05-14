@@ -1,7 +1,7 @@
 //Ilość linijek: V1-414, V2-355, V3-231, V4-72
 const O = "O";
 const X = "X";
-var t=0;
+var t = 0;
 
 var turn = 1;
 var win = 0;
@@ -13,7 +13,7 @@ document.getElementById("turn").innerHTML = "Tura: " + turn;
 
 function is_win(){
     if ( //Win dla poziomych linii
-        (field_value[0] == X && field_value[1] == X && field_value[2] == X) || (field_value[0] == O && field_value[1] == O && field_value[2] == O) ||(field_value[3] == X && field_value[4] == X && field_value[5] == X) || (field_value[3] == O && field_value[4] == O && field_value[5] == O) ||(field_value[6] == X && field_value[7] == X && field_value[8] == X) || (field_value[6] == O && field_value[7] == O && field_value[8] == O) ||
+        (field_value[0] && field_value[1] && field_value[2] == X) || (field_value[0] == O && field_value[1] == O && field_value[2] == O) || (field_value[3] == X && field_value[4] == X && field_value[5] == X) || (field_value[3] == O && field_value[4] == O && field_value[5] == O) ||(field_value[6] == X && field_value[7] == X && field_value[8] == X) || (field_value[6] == O && field_value[7] == O && field_value[8] == O) ||
 
         //Win dla pionowych linii
         (field_value[0] == X && field_value[3] == X && field_value[6] == X) || (field_value[0] == O && field_value[3] == O && field_value[6] == O) ||(field_value[1] == X && field_value[4] == X && field_value[7] == X) || (field_value[1] == O && field_value[4] == O && field_value[7] == O) ||(field_value[2] == X && field_value[5] == X && field_value[8] == X) || (field_value[2] == O && field_value[5] == O && field_value[8] == O) ||
@@ -59,8 +59,7 @@ function reset(){
         document.getElementById(i).disabled = false;
     }
 
-    for(var i=0; i<used.length; i++)
-    {
+    for(var i=0; i<used.length; i++){
         used[i]=0;
         field_value[i]=0;
     }
