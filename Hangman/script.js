@@ -9,12 +9,12 @@ var words_guess = ["wilk", "ABC", "Kot", "Pies", "Samochód", "Ryś", "Czołg", 
 var to_rand = words_guess.length;
 var choice = " ";
 
-function randed(obj) {
+randed = (obj) => {
     var which = Math.floor(Math.random() * to_rand);
     obj.words = words_guess[which];
 }
 
-function gamemode(that) {
+gamemode = (that) => {
     if (choice == " ") {
         if (confirm("You want to input word by yourself?")) {
             //Wpisanie hasła przez gracza
@@ -26,7 +26,7 @@ function gamemode(that) {
             //Losowanie hasła z tablicy
             randed(word);
             that.long = that.words.length;
-            console.log(password.pass);
+            console.log(word.words);
             choice = "auto";
         }
     } else if (choice == "self") {
@@ -51,7 +51,7 @@ var guessed = 0;
 
 
 //Wpisanie hasła w tablicę i wyświetlanie pól w haśle
-function pass_array(pass) {
+pass_array = (pass) => {
     for (let i = 0; i < word.long; i++) {
         pass[i] = word.words.charAt(i);
         if (pass[i] == " ") {
@@ -67,7 +67,7 @@ function pass_array(pass) {
 onload = pass_array(pass);
 
 //Uruchamianie klawiatury
-function btnDisable() {
+btnDisable = () => {
     var x = document.getElementsByClassName("alphabet_btn");
     for (let i = 0; i < x.length; i++) {
         x[i].disabled = true;
@@ -76,7 +76,7 @@ function btnDisable() {
 }
 
 //Wyłączanie klawiatury
-function btnEnable() {
+btnEnable = () => {
     var x = document.getElementsByClassName("alphabet_btn");
     for (let i = 0; i < x.length; i++) {
         x[i].disabled = false;
@@ -84,7 +84,7 @@ function btnEnable() {
     document.getElementById("new_game_btn").style.display = "none";
 }
 
-function letter_print(letter) {
+letter_print = (letter) => {
     //Podmienianie liter w haśle
     var temp = 0;
     letters[i - 1] = letter.toLowerCase();
@@ -126,7 +126,7 @@ function letter_print(letter) {
 }
 
 //Resetowanie ustawień i zmiennych do nowej gry
-function new_game() {
+new_game = () => {
     document.getElementById("info2").innerHTML = " ";
     document.getElementById("missed_letters").innerHTML = " ";
     document.getElementById("pass").innerHTML = " ";
