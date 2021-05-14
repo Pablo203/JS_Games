@@ -440,38 +440,34 @@
 }
 
 .info-box-name{
-    @include border;
+    //@include border;
     width: 100%;
-    height: 15%;
+    height: 25%;
     margin-top: 5%;
 }
 
 .info-box-value{
-    @include border;
+    //@include border;
+    border-bottom: 1px solid black;
     width: 100%;
-    height: 15%;
-    margin-top: 5%;
-}
-
-.info-box-own{
-    @include border;
-    width: 100%;
-    height: 15%;
+    height: 25%;
     margin-top: 5%;
 }
 
 .info-box-title{
-    @include border;
-    height: 100%;
+    //@include border;
+    height: 70%;
     width: 20%;
-    display: inline;
+    display: block;
     font-size: 35px;
+    margin: 5% 0% 0% 10%;
 }
 .info-box-text{
-    @include border;
-    width: 70%;
-    height: 100%;
-    display: inline;
+    //@include border;
+    width: 60%;
+    height: 20%;
+    display: block;
+    margin: -10% 0% 0% 30%;
 }
 
 .info-box-btn-action{

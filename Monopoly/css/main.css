@@ -45,6 +45,7 @@ html {
 
 .player-1-balance {
   font-size: 30px;
+  font-weight: bold;
   border: 5px ridge #ca1a1a;
   background-color: #dbdbdb;
   text-align: center;
@@ -55,6 +56,7 @@ html {
 
 .player-2-balance {
   font-size: 30px;
+  font-weight: bold;
   border: 5px ridge #33b6df;
   background-color: #dbdbdb;
   text-align: center;
@@ -103,12 +105,27 @@ html {
   background-color: grey;
 }
 
-.rail-4-cards-head {
+.rail-cards {
   border: 1px solid black;
   width: 100%;
   height: 12.5%;
   background-color: grey;
   margin-top: 10%;
+}
+
+.last-rail-card-head {
+  border: 1px solid black;
+  width: 100%;
+  height: 12.5%;
+  background-color: grey;
+  margin-top: 10%;
+  height: 25%;
+}
+
+.last-rail-card {
+  border: 1px solid black;
+  width: 100%;
+  height: 55%;
 }
 
 .prop-3-cards {

@@ -58,6 +58,7 @@ pass = () => {
     document.getElementById("knefel").style.display = "block";
     document.getElementById("ask").style.display = "block";
     document.getElementById("info").style.display = "none";
+    document.getElementById("payment").style.display = "none";
     hide("chance");
     hide("chest");
     hide("tax");
@@ -401,12 +402,89 @@ is_special = (player_who) => {
     }
 }
 
+isOwned = (player_who) => {
+    //document.getElementById("info").style.display = "block";
+    //document.getElementById("payment").style.display = "block";
+    var fieldOwn = players[player_who]["field"];
+    var owner = " ";
+    if((property[fieldOwn]["own"]) != " "){
+        document.getElementById("payment").style.display = "block";
+        owner = property[fieldOwn]["own"];
+        //Pay
+    }
+    else if((property[fieldOwn]["own"]) == " "){
+        document.getElementById("info").style.display = "block";
+        //Buy or Pass
+    }
+}
+
+//Pay if field is owned
+pay = () => {
+    var player_who = (gamesData["turn"]-1) % 2;
+    var standing = " ";
+    var owner = " ";
+    if(player_who == 1){
+        standing = "player1"
+        standingCash = "money_1";
+        owner = "player2";
+        ownerCash = "money_2";
+    }
+    else if(player_who == 0){
+        standing = "player2";
+        standingCash = "money_2";
+        owner = "player1";
+        ownerCash = "money_1";
+    }
+    var toPay = 0;
+    var whichField = players[standing]["field"];
+
+    toPay = (property[whichField]["price_default"]) + (property[whichField]["house"] * property[whichField]["house_price"]) + (property[whichField]["hotel"] * property[whichField]["hotel_price"]);
+    console.log(gamesData["turn"]);
+    console.log(standing);
+    console.log(owner);
+    players[standing]["PlayerCash"] -= toPay;
+    players[owner]["PlayerCash"] += toPay;
+    document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"];
+    document.getElementById(ownerCash).innerHTML = players[owner]["PlayerCash"];
+    pass();
+}
+
+//Free field buy option
+buy = () => {
+    var player_who = gamesData["turn"] % 2;
+    var standing = " ";
+    var owner = " ";
+    if(player_who = 1){
+        standing = "player1";
+        standingCash = "money_1";
+    }
+    else if(player_who = 0){
+        standing = "player2";
+        standingCash = "money_2";
+    }
+    var fieldOn = players[standing]["field"];
+    var price = property[fieldOn]["value"];
+    if(players[standing]["PlayerCash"] >= price){
+        players[standing]["PlayerCash"] -= price;
+        property[fieldOn]["own"] = standing;
+        document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"];
+        alert("Kupiono")
+        console.log(property[fieldOn]);
+        pass();
+    }
+    else if(players[standing]["PlayerCash"] < price){
+        console.log("Nie masz hajsu biedaku");
+        alert("No money");
+        pass();
+    }
+}
+
 move = () => {
     //Dissapearing middle box and shows info box 
     document.getElementById("community_chest").style.display = "none";
     document.getElementById("knefel").style.display = "none";
     document.getElementById("ask").style.display = "none";
-    document.getElementById("info").style.display = "block";
+    
     //Throwing dice and summing it
     diceThrow();
     gamesData["drop"]["sum"] = gamesData["drop"]["1"] + gamesData["drop"]["2"];
@@ -429,8 +507,10 @@ move = () => {
         document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#ca1a1a";
 
         is_special("player1");
-
+        isOwned("player1");
+        console.log("Move function end 1")
         gamesData["turn"]++;
+        console.log(gamesData["turn"] + " po zwiekszeniu tury");
     } else if (gamesData["turn"] % 2 == 0) {
         //Jumping through fields and if field id = 0 (start) adding money
         for (let i = 0; i < dropTogether; i++) {
@@ -448,6 +528,9 @@ move = () => {
         document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#33b6df";
 
         is_special("player2");
+        isOwned("player2");
+        console.log("Move function end 2");
         gamesData["turn"]++;
+        console.log(gamesData["turn"] + " po zwiekszeniu tury");
     }
 }
