@@ -68,7 +68,7 @@ var property = {
     "1" : {
         "color" : "brown",
         "name" : "Mediter",
-        "value" : "60",
+        "value" : 60,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -85,7 +85,7 @@ var property = {
     "3" : {
         "color" : "brown",
         "name" : "Baltic",
-        "value" : "60",
+        "value" : 60,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -102,7 +102,7 @@ var property = {
     "5" : {
         "color" : "black",
         "name" : "Railroad S",
-        "value" : "200",
+        "value" : 200,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -113,7 +113,7 @@ var property = {
     "6" : {
         "color" : "lightblue",
         "name" : "Oriental",
-        "value" : "100",
+        "value" : 100,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -130,7 +130,7 @@ var property = {
     "8" : {
         "color" : "lightblue",
         "name" : "Vermont",
-        "value" : "100",
+        "value" : 100,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -141,7 +141,7 @@ var property = {
     "9" : {
         "color" : "lightblue",
         "name" : "Connecticut",
-        "value" : "120",
+        "value" : 120,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -158,7 +158,7 @@ var property = {
     "11" : {
         "color" : "pink",
         "name" : "St. Charles Place",
-        "value" : "140",
+        "value" : 140,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -169,7 +169,7 @@ var property = {
     "12" : {
         "color" : "#CDF0AE",
         "name" : "Power plant",
-        "value" : "150",
+        "value" : 150,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -180,7 +180,7 @@ var property = {
     "13" : {
         "color" : "pink",
         "name" : "states",
-        "value" : "140",
+        "value" : 140,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -191,7 +191,7 @@ var property = {
     "14" : {
         "color" : "pink",
         "name" : "Virginia",
-        "value" : "160",
+        "value" : 160,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -202,7 +202,7 @@ var property = {
     "15" : {
         "color" : "black",
         "name" : "Railroad W",
-        "value" : "200",
+        "value" : 200,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -213,7 +213,7 @@ var property = {
     "16" : {
         "color" : "orange",
         "name" : "St.James Place",
-        "value" : "180",
+        "value" : 180,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -230,7 +230,7 @@ var property = {
     "18" : {
         "color" : "orange",
         "name" : "Tennesse",
-        "value" : "180",
+        "value" : 180,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -241,7 +241,7 @@ var property = {
     "19" : {
         "color" : "orange",
         "name" : "New York",
-        "value" : "200",
+        "value" : 200,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -258,7 +258,7 @@ var property = {
     "21" : {
         "color" : "red",
         "name" : "Kentucky",
-        "value" : "220",
+        "value" : 220,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -275,7 +275,7 @@ var property = {
     "23" : {
         "color" : "red",
         "name" : "Indiana",
-        "value" : "220",
+        "value" : 220,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -286,7 +286,7 @@ var property = {
     "24" : {
         "color" : "red",
         "name" : "Illinois",
-        "value" : "230",
+        "value" : 230,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -297,7 +297,7 @@ var property = {
     "25" : {
         "color" : "black",
         "name" : "Railroad N",
-        "value" : "200",
+        "value" : 200,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -308,7 +308,7 @@ var property = {
     "26" : {
         "color" : "yellow",
         "name" : "Atlantic",
-        "value" : "260",
+        "value" : 260,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -319,7 +319,7 @@ var property = {
     "27" : {
         "color" : "yellow",
         "name" : "Ventnor",
-        "value" : "260",
+        "value" : 260,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -330,14 +330,14 @@ var property = {
     "28" : {
         "color" : "#CDF0AE",
         "name" : "Water Works",
-        "value" : "150",
+        "value" : 150,
         "price_default" : 10,
         "own" : " "
     },
     "29" : {
         "color" : "yellow",
         "name" : "Marvin",
-        "value" : "280",
+        "value" : 280,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -354,7 +354,7 @@ var property = {
     "31" : {
         "color" : "green",
         "name" : "Pacific",
-        "value" : "300",
+        "value" : 300,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -365,7 +365,7 @@ var property = {
     "32" : {
         "color" : "green",
         "name" : "North Carolina",
-        "value" : "300",
+        "value" : 300,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -382,7 +382,7 @@ var property = {
     "34" : {
         "color" : "green",
         "name" : "Pensylvania",
-        "value" : "320",
+        "value" : 320,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -393,7 +393,7 @@ var property = {
     "35" : {
         "color" : "black",
         "name" : "Railroad",
-        "value" : "200",
+        "value" : 200,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -410,7 +410,7 @@ var property = {
     "37" : {
         "color" : "blue",
         "name" : "Park Place",
-        "value" : "350",
+        "value" : 350,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,
@@ -427,7 +427,7 @@ var property = {
     "39" : {
         "color" : "blue",
         "name" : "Board Walk",
-        "value" : "400",
+        "value" : 400,
         "house" : 0,
         "hotel" : 0,
         "house_price" : 40,

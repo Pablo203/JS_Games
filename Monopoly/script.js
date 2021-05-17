@@ -34,8 +34,8 @@ var dropTogether = 0;
 var splice = 1;
 //Functions Setup Area
 diceThrow = () => {
-    gamesData["drop"]["1"] = Math.floor(Math.random() * 1) + 3;
-    gamesData["drop"]["2"] = Math.floor(Math.random() * 1) + 4;
+    gamesData["drop"]["1"] = Math.floor(Math.random() * 6) + 1;
+    gamesData["drop"]["2"] = Math.floor(Math.random() * 6) + 1;
 }
 
 shuffleArray = (array) => {
@@ -94,7 +94,7 @@ chestGet = () => {
     let x = (specialCards["chest"])[0];
     document.getElementById("chest_title").innerHTML = "Community Chest";
     document.getElementById("chest_content").innerHTML = (specialCards["cards"])[x];
-    console.log((specialCards["cards"])[x]);
+
     chest_action();
     firstCardToLast(specialCards["chest"]);
 }
@@ -108,7 +108,6 @@ chest_action = () => {
     var number = (specialCards["chest"])[0];
     var mark = "";
     var color = "";
-    console.log(turn + " turn");
     //Local variables setup 2
     if (turn % 2 == 1) {
         which = "money_1";
@@ -290,7 +289,7 @@ chance_action = () => {
 
     } else if (number == 20) {
         console.log("20");
-        
+
 
     } else if (number == 21) {
         console.log("21");
@@ -407,12 +406,16 @@ isOwned = (player_who) => {
     //document.getElementById("payment").style.display = "block";
     var fieldOwn = players[player_who]["field"];
     var owner = " ";
-    if((property[fieldOwn]["own"]) != " "){
-        document.getElementById("payment").style.display = "block";
-        owner = property[fieldOwn]["own"];
+    if ((property[fieldOwn]["own"]) != " ") {
+        if ((property[fieldOwn]["own"]) == player_who) {
+            //upgrade();
+            console.log("You own that")
+        } else {
+            document.getElementById("payment").style.display = "block";
+            owner = property[fieldOwn]["own"];
+        }
         //Pay
-    }
-    else if((property[fieldOwn]["own"]) == " "){
+    } else if ((property[fieldOwn]["own"]) == " ") {
         document.getElementById("info").style.display = "block";
         //Buy or Pass
     }
@@ -420,16 +423,15 @@ isOwned = (player_who) => {
 
 //Pay if field is owned
 pay = () => {
-    var player_who = (gamesData["turn"]-1) % 2;
+    var player_who = (gamesData["turn"] - 1) % 2;
     var standing = " ";
     var owner = " ";
-    if(player_who == 1){
+    if (player_who == 1) {
         standing = "player1"
         standingCash = "money_1";
         owner = "player2";
         ownerCash = "money_2";
-    }
-    else if(player_who == 0){
+    } else if (player_who == 0) {
         standing = "player2";
         standingCash = "money_2";
         owner = "player1";
@@ -439,9 +441,6 @@ pay = () => {
     var whichField = players[standing]["field"];
 
     toPay = (property[whichField]["price_default"]) + (property[whichField]["house"] * property[whichField]["house_price"]) + (property[whichField]["hotel"] * property[whichField]["hotel_price"]);
-    console.log(gamesData["turn"]);
-    console.log(standing);
-    console.log(owner);
     players[standing]["PlayerCash"] -= toPay;
     players[owner]["PlayerCash"] += toPay;
     document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"];
@@ -451,30 +450,25 @@ pay = () => {
 
 //Free field buy option
 buy = () => {
-    var player_who = gamesData["turn"] % 2;
+    var player_who = (gamesData["turn"] - 1) % 2;
     var standing = " ";
-    var owner = " ";
-    if(player_who = 1){
+    if (player_who == 1) {
         standing = "player1";
         standingCash = "money_1";
-    }
-    else if(player_who = 0){
+    } else if (player_who == 0) {
         standing = "player2";
         standingCash = "money_2";
     }
     var fieldOn = players[standing]["field"];
     var price = property[fieldOn]["value"];
-    if(players[standing]["PlayerCash"] >= price){
+    if (players[standing]["PlayerCash"] >= price) {
         players[standing]["PlayerCash"] -= price;
         property[fieldOn]["own"] = standing;
         document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"];
         alert("Kupiono")
-        console.log(property[fieldOn]);
         pass();
-    }
-    else if(players[standing]["PlayerCash"] < price){
-        console.log("Nie masz hajsu biedaku");
-        alert("No money");
+    } else if (players[standing]["PlayerCash"] < price) {
+        alert("No money you poor retard");
         pass();
     }
 }
@@ -484,7 +478,7 @@ move = () => {
     document.getElementById("community_chest").style.display = "none";
     document.getElementById("knefel").style.display = "none";
     document.getElementById("ask").style.display = "none";
-    
+
     //Throwing dice and summing it
     diceThrow();
     gamesData["drop"]["sum"] = gamesData["drop"]["1"] + gamesData["drop"]["2"];
@@ -505,12 +499,9 @@ move = () => {
         //Gets new field id and showing pawn
         gamesData["field_Id"]["A"] = players["player1"]["field"] + "a";
         document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#ca1a1a";
-
-        is_special("player1");
         isOwned("player1");
-        console.log("Move function end 1")
+        is_special("player1");
         gamesData["turn"]++;
-        console.log(gamesData["turn"] + " po zwiekszeniu tury");
     } else if (gamesData["turn"] % 2 == 0) {
         //Jumping through fields and if field id = 0 (start) adding money
         for (let i = 0; i < dropTogether; i++) {
@@ -526,11 +517,8 @@ move = () => {
         //Gets new field id and showing pawn
         gamesData["field_Id"]["B"] = players["player2"]["field"] + "b";
         document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#33b6df";
-
-        is_special("player2");
         isOwned("player2");
-        console.log("Move function end 2");
+        is_special("player2");
         gamesData["turn"]++;
-        console.log(gamesData["turn"] + " po zwiekszeniu tury");
     }
 }

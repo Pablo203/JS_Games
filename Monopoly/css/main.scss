@@ -13,14 +13,14 @@ html{
 /*Player Window*/
 .player_1-tab{
     background-color: $player-1;
-    height: 50%;
+    height: 113.7%;
     width: 100%;
     margin-left: 3%;
 }
 
 .player_2-tab{
     background-color: $player-2;
-    height: 50%;
+    height: 113.7%;
     width: 100%;
 }
 
@@ -70,7 +70,7 @@ html{
 .player-1{
     border: 1px solid black;
     background-color: $player-1;
-    height: 50%;
+    height: 70%;
     width: 50%;
     margin-top: 25%;
     margin-left: 25%;
@@ -78,7 +78,7 @@ html{
 
 //Properties Cards Area
 .player-1-prop{
-    height: 60%;
+    height: 27%;
     width: 90%;
     margin-left: 5%;
     background-color: white;
@@ -178,3 +178,22 @@ html{
     margin-top: 20%;
     background-color: grey;
 }
+
+
+//Prison Cards
+.prison-out-area{
+    border: 1px solid black;
+    height: 8%;
+    width: 90%;
+    background-color: white;
+    margin: 5% 0% 0% 5%;
+}
+
+.prison-out-card{
+    border: 1px solid black;
+    height: 90%;
+    width: 40%;
+    margin: 1% 0% 0% 5%;
+}
+
+//Property Card Big Area
