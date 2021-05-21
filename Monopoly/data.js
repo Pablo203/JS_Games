@@ -54,8 +54,7 @@ var specialCards = {
         "30": "Płacisz każdemu z graczy 50$", 
         "31": "Dostajesz 150$",
         "32": "Wygrywasz konkurs krzyżówek. Dostajesz 100$"
-        //To finish: 20, 21, 23, 5
-        //To finish 23 5 need prison mechanic
+        //To finish: 20, 21
     }
 };
 
@@ -179,7 +178,7 @@ var property = {
     },
     "13" : {
         "color" : "pink",
-        "name" : "states",
+        "name" : "States",
         "value" : 140,
         "house" : 0,
         "hotel" : 0,
@@ -392,7 +391,7 @@ var property = {
     },
     "35" : {
         "color" : "black",
-        "name" : "Railroad",
+        "name" : "Railroad E",
         "value" : 200,
         "house" : 0,
         "hotel" : 0,

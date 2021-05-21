@@ -624,3 +624,50 @@
 .tax-box-content-text{
     @include special-box-content-text;
 }
+
+//Prison Box
+.prison-box{
+    @include special-box;
+}
+
+.prison-box-title{
+    @include special-box-title;
+}
+
+.prison-box-content{
+    @include special-box-content;
+}
+
+.prison-box-action{
+    @include special-box-pass;
+}
+
+.prison-box-title-text{
+    @include special-box-title-text;
+}
+
+.prison-box-content-text{
+    @include special-box-content-text;
+}
+
+.prison-btn{
+    margin-left: 9%;
+    margin-top: 4%;
+}
+
+//Dice Areas
+.dice-1{
+    height: 15%;
+    width: 10%;
+    position: absolute;
+    @include border;
+    margin: 17% 0% 0% 5%;
+}
+
+.dice-2{
+    height: 15%;
+    width: 10%;
+    position: absolute;
+    @include border;
+
+}

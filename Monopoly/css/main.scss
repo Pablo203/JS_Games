@@ -6,9 +6,9 @@ html{
     overflow-y: hidden;
 }
 
-.side{
+/*.side{
     background-color: $side-color;
-}
+}*/
 
 /*Player Window*/
 .player_1-tab{
@@ -22,6 +22,7 @@ html{
     background-color: $player-2;
     height: 113.7%;
     width: 100%;
+    margin-left: -3%;
 }
 
 .player_3-tab{
@@ -196,4 +197,71 @@ html{
     margin: 1% 0% 0% 5%;
 }
 
-//Property Card Big Area
+//Property Card Show
+.card-show-field{
+    border: 1px solid black;
+    height: 40%;
+    width: 90%;
+    background-color: white;
+    margin: 5% 0% 0% 5%;
+}
+
+.card-area-main{
+    border: 1px solid black;
+    height: 93%;
+    width: 90%;
+    margin: 5% 0% 0% 5%;
+}
+
+.card-area-title{
+    height: 15%;
+    width: 90%;
+    border: 1px solid black;
+    margin: 3% 0% 0% 5%;
+}
+
+.card-area-title-text{
+    //border: 1px solid black;
+    color: rgb(155, 155, 155);
+    width: 90%;
+    height: 80%;
+    text-align: center;
+    margin: 2.5% 0% 0% 5%;
+}
+
+.card-area-taxes{
+    border: 1px solid black;
+    height: 50%;
+    width: 90%;
+    margin: 5% 0% 0% 5%;
+}
+
+.card-area-taxes-field{
+    height: 16.7%;
+    width: 100%;
+    //border: 1px solid black;
+}
+
+
+.card-area-build-price{
+    height: 22%;
+    width: 90%;
+    margin: -5% 0% 0% 5%;
+    border: 1px solid black;
+}
+
+.card-area-tax-text{
+    //border: 1px solid black;
+    width: 50%;
+    height: 100%;
+    margin-top: -1%;
+    float: left;
+}
+
+.card-area-tax-data{
+    //border: 1px solid black;
+    width: 30%;
+    height: 100%;
+    float: right;
+    margin-top: -1%;
+}

@@ -5,7 +5,9 @@ var players = {
         "result": 0,
         "field": 0,
         "houses": 0,
-        "hotels": 0
+        "hotels": 0,
+        "prisonOut": 0,
+        "prison": 0
     },
     "player2": {
         "PlayerName": "Gracz2",
@@ -13,7 +15,9 @@ var players = {
         "result": 0,
         "field": 0,
         "houses": 0,
-        "hotels": 0
+        "hotels": 0,
+        "prisonOut": 0,
+        "prison": 0
     }
 }
 
@@ -62,6 +66,7 @@ pass = () => {
     hide("chance");
     hide("chest");
     hide("tax");
+    hide("prison");
 }
 
 //Special Fields Operations
@@ -80,15 +85,18 @@ hide = (word) => {
 }
 
 //Setup Area
+
 //Wyświetlenie początkowego stanu gotówki
 document.getElementById("money_1").innerHTML = players["player1"]["PlayerCash"];
 document.getElementById("money_2").innerHTML = players["player2"]["PlayerCash"];
+
 //Wyświetlenie początkowej lokalizacji pionków
 document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#ca1a1a";
 document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#33b6df";
+
 //Przetasowanie talii
 shuffleArray(specialCards["chest"]);
-//shuffleArray(specialCards["chance"]);
+shuffleArray(specialCards["chance"]);
 
 chestGet = () => {
     let x = (specialCards["chest"])[0];
@@ -154,7 +162,11 @@ chest_action = () => {
 
     } else if (number == 5) {
         console.log("5");
-
+        if (players[who]["prisonOut"] < 2) {
+            players[who]["prisonOut"]++;
+            //document.getElementById("prison" + mark + players[who]["prisonOut"]).style.display = "block";
+            document.getElementById("prison" + mark + players[who]["prisonOut"]).innerHTML = "asasdgfsd";
+        }
 
     } else if (number == 6) {
         console.log("6");
@@ -302,10 +314,11 @@ chance_action = () => {
 
     } else if (number == 23) {
         console.log("23");
-        players[who]["PlayerCash"] += 50;
-        players[who2]["PlayerCash"] -= 50;
-        document.getElementById(which).innerHTML = players[who]["PlayerCash"];
-        document.getElementById(which1).innerHTML = players[who2]["PlayerCash"];
+        if (players[who]["prisonOut"] < 2) {
+            players[who]["prisonOut"]++;
+            //document.getElementById("prison" + mark + players[who]["prisonOut"]).style.display = "block";
+            document.getElementById("prison" + mark + players[who]["prisonOut"]).innerHTML = "asasdgfsd";
+        }
 
     } else if (number == 24) {
         console.log("24");
@@ -370,16 +383,129 @@ chance_action = () => {
     }
 }
 
+showCard = (ID) => {
+    //Substracting Name from ID
+    var nameID = ID.slice(0, 1);
+    var fieldID = ID.slice(1, 3);
+
+    if (fieldID == 5 || 15 || 25 || 35) {
+        document.getElementById(nameID + "_card_show_title").style.color = "white";
+    } else if (fieldID != 5 || 15 || 25 || 35) {
+        document.getElementById(nameID + "_card_show_title").style.color = "black";
+    }
+    document.getElementById(nameID + "_card-show-title-area").style.backgroundColor = property[fieldID]["color"];
+
+    document.getElementById(nameID + "_card_show_title").innerHTML = property[fieldID]["name"];
+
+
+    document.getElementById(nameID + "_rent").innerHTML = property[fieldID]["price_default"];
+    document.getElementById(nameID + "_one_house_rent").innerHTML = property[fieldID]["house_price"] * 1;
+    document.getElementById(nameID + "_two_house_rent").innerHTML = property[fieldID]["house_price"] * 2;
+    document.getElementById(nameID + "_three_house_rent").innerHTML = property[fieldID]["house_price"] * 3;
+    document.getElementById(nameID + "_four_house_rent").innerHTML = property[fieldID]["house_price"] * 4;
+    document.getElementById(nameID + "_hotel_rent").innerHTML = property[fieldID]["hotel_price"] * 1;
+}
+
+goToPrison = (player_who) => {
+    var mark = "";
+    var color = "";
+    if(player_who == "player1"){
+        color = "#ca1a1a";
+        mark = "A";
+        mark2 = "a";
+    } else if(player_who == "player2"){
+        color = "#33b6df";
+        mark = "B";
+        mark2 = "b";
+    }
+    players[player_who]["prison"] = 3;
+    players[player_who]["result"] = 10;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+        players[player_who]["field"] = players[player_who]["result"];
+        gamesData["field_Id"][mark] = players[player_who]["field"] + mark2;
+        document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+}
+
+prison = (player_who) => {
+    show("prison");
+    document.getElementById("prison_turn_left").innerHTML = players[player_who]["prison"];
+}
+
+prisonCard = () => {
+    var player_who = "";
+    if(gamesData["turn"] % 39 == 1){
+        player_who = "player1";
+    } else if(gamesData["turn"] % 39 == 0){
+        player_who = "player2";
+    }
+
+    if(players[player_who]["prisonOut"] != 0){
+        players[player_who]["prisonOut"]--;
+        players[player_who]["prison"] = 0;
+        alert("Użyto karty");
+        pass();
+    }
+    else{
+        alert("Nie posiadasz karty");
+    }
+    console.log("CARD");
+}
+
+prisonDice = () => {
+    var player_who = "";
+    if(gamesData["turn"] % 39 == 1){
+        player_who = "player1";
+    } else if(gamesData["turn"] % 39 == 0){
+        player_who = "player2";
+    }
+    diceThrow();
+    console.log(gamesData["drop"]["1"]);
+    console.log(gamesData["drop"]["2"]);
+    if(gamesData["drop"]["1"] == gamesData["drop"]["2"]){
+        players[player_who]["prison"] = 0;
+        alert("Wychodzisz z więzienia");
+        pass();
+    }
+    else{
+        players[player_who]["prison"]--;
+        pass();
+    }
+}
+
+prisonPay = () => {
+    var player_who = "";
+    if(gamesData["turn"] % 39 == 1){
+        player_who = "player1";
+        money = "money_1";
+    } else if(gamesData["turn"] % 39 == 0){
+        player_who = "player2";
+        money = "money_2";
+    }
+    players[player_who]["PlayerCash"] -= 50;
+    document.getElementById(money).innerHTML = players[player_who]["PlayerCash"];
+    alert("Wykupiłeś się z więzienia");
+    players[player_who]["prison"] = 0;
+    console.log(players[player_who]["prison"]);
+    console.log("PAY");
+    pass();
+}
+
 is_special = (player_who) => {
     //Checking if field is in any corner. If not takes every element from arrays and compare it with actual field
     if (players[player_who]["field"] == 10) {
         console.log("Prison Field");
+        pass();
     } else if (players[player_who]["field"] == 20) {
         pass();
     }
     //Go to Jail 30
     else if (players[player_who]["field"] == 30) {
-        console.log("Go to jail");
+        //console.log("Go to jail");
+        goToPrison(player_who);
+        pass();
+    } else if (players[player_who]["field"] == 0) {
+        console.log("Start");
+        pass();
     }
     /*else if(field == )*/
     for (x in specialCards["fields"]["chances"]) {
@@ -402,14 +528,12 @@ is_special = (player_who) => {
 }
 
 isOwned = (player_who) => {
-    //document.getElementById("info").style.display = "block";
-    //document.getElementById("payment").style.display = "block";
     var fieldOwn = players[player_who]["field"];
     var owner = " ";
     if ((property[fieldOwn]["own"]) != " ") {
         if ((property[fieldOwn]["own"]) == player_who) {
             //upgrade();
-            console.log("You own that")
+            console.log("You own that");
         } else {
             document.getElementById("payment").style.display = "block";
             owner = property[fieldOwn]["own"];
@@ -417,6 +541,9 @@ isOwned = (player_who) => {
         //Pay
     } else if ((property[fieldOwn]["own"]) == " ") {
         document.getElementById("info").style.display = "block";
+        document.getElementById("color").style.backgroundColor = property[fieldOwn]["color"];
+        document.getElementById("title").innerHTML = property[fieldOwn]["name"];
+        document.getElementById("cost").innerHTML = property[fieldOwn]["value"];
         //Buy or Pass
     }
 }
@@ -448,6 +575,17 @@ pay = () => {
     pass();
 }
 
+getCard = (field) => {
+    if (gamesData["turn"] % 2 == 0) {
+        var mark = "A";
+    } else if (gamesData["turn"] % 2 == 1) {
+        var mark = "B";
+    }
+    var cardID = mark + field;
+    console.log(cardID);
+    document.getElementById(cardID).style.backgroundColor = property[field]["color"];
+
+}
 //Free field buy option
 buy = () => {
     var player_who = (gamesData["turn"] - 1) % 2;
@@ -465,10 +603,11 @@ buy = () => {
         players[standing]["PlayerCash"] -= price;
         property[fieldOn]["own"] = standing;
         document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"];
-        alert("Kupiono")
+        getCard(fieldOn);
+        alert("Kupiono");
         pass();
     } else if (players[standing]["PlayerCash"] < price) {
-        alert("No money you poor retard");
+        alert("No money u poor retard");
         pass();
     }
 }
@@ -484,41 +623,55 @@ move = () => {
     gamesData["drop"]["sum"] = gamesData["drop"]["1"] + gamesData["drop"]["2"];
     dropTogether = gamesData["drop"]["sum"];
     //Tells whos player turn it is depending on turn % 2
+
     if (gamesData["turn"] % 2 == 1) {
-        //Jumping through fields and if field id = 0 (start) adding money
-        for (let i = 0; i < dropTogether; i++) {
-            players["player1"]["result"]++;
-            if ((players["player1"]["result"] % 39) == 0) {
-                players["player1"]["PlayerCash"] += 200;
-                document.getElementById("money_1").innerHTML = players["player1"]["PlayerCash"];
+        if (players["player1"]["prison"] != 0) {
+            prison("player1");
+        } else {
+            //Jumping through fields and if field id = 0 (start) adding money
+            for (let i = 0; i < dropTogether; i++) {
+                players["player1"]["result"]++;
+                if ((players["player1"]["result"] % 39) == 0) {
+                    alert("START");
+                    players["player1"]["PlayerCash"] += 200;
+                    document.getElementById("money_1").innerHTML = players["player1"]["PlayerCash"];
+                }
             }
+            //Adds result from jumping to field and dissapears pawn from previous place
+            players["player1"]["field"] = (players["player1"]["result"]) % 39;
+            document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#FFFFFF";
+            //Gets new field id and showing pawn
+            gamesData["field_Id"]["A"] = players["player1"]["field"] + "a";
+            document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#ca1a1a";
+            isOwned("player1");
+            is_special("player1");
+            gamesData["turn"]++;
         }
-        //Adds result from jumping to field and dissapears pawn from previous place
-        players["player1"]["field"] = (players["player1"]["result"]) % 39;
-        document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#FFFFFF";
-        //Gets new field id and showing pawn
-        gamesData["field_Id"]["A"] = players["player1"]["field"] + "a";
-        document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#ca1a1a";
-        isOwned("player1");
-        is_special("player1");
-        gamesData["turn"]++;
-    } else if (gamesData["turn"] % 2 == 0) {
-        //Jumping through fields and if field id = 0 (start) adding money
-        for (let i = 0; i < dropTogether; i++) {
-            players["player2"]["result"]++;
-            if ((players["player2"]["result"] % 39) == 0) {
-                players["player2"]["PlayerCash"] += 200;
-                document.getElementById("money_2").innerHTML = players["player2"]["PlayerCash"];
+    } 
+    
+    else if (gamesData["turn"] % 2 == 0) {
+        if (players["player2"]["prison"] != 0) {
+            prison("player2");
+            console.log("PRISON 2");
+        } else {
+            //Jumping through fields and if field id = 0 (start) adding money
+            for (let i = 0; i < dropTogether; i++) {
+                players["player2"]["result"]++;
+                if ((players["player2"]["result"] % 39) == 0) {
+                    alert("START");
+                    players["player2"]["PlayerCash"] += 200;
+                    document.getElementById("money_2").innerHTML = players["player2"]["PlayerCash"];
+                }
             }
+            //Adds result from jumping to field and dissapears pawn from previous place
+            players["player2"]["field"] = (players["player2"]["result"]) % 39;
+            document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#FFFFFF";
+            //Gets new field id and showing pawn
+            gamesData["field_Id"]["B"] = players["player2"]["field"] + "b";
+            document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#33b6df";
+            isOwned("player2");
+            is_special("player2");
+            gamesData["turn"]++;
         }
-        //Adds result from jumping to field and dissapears pawn from previous place
-        players["player2"]["field"] = (players["player2"]["result"]) % 39;
-        document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#FFFFFF";
-        //Gets new field id and showing pawn
-        gamesData["field_Id"]["B"] = players["player2"]["field"] + "b";
-        document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#33b6df";
-        isOwned("player2");
-        is_special("player2");
-        gamesData["turn"]++;
     }
 }

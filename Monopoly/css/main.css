@@ -4,10 +4,9 @@ html {
   overflow-y: hidden;
 }
 
-.side {
-  background-color: #a1a1a1;
-}
-
+/*.side{
+    background-color: $side-color;
+}*/
 /*Player Window*/
 .player_1-tab {
   background-color: #ca1a1a;
@@ -20,6 +19,7 @@ html {
   background-color: #33b6df;
   height: 113.7%;
   width: 100%;
+  margin-left: -3%;
 }
 
 .player_3-tab {
@@ -189,4 +189,67 @@ html {
   height: 90%;
   width: 40%;
   margin: 1% 0% 0% 5%;
+}
+
+.card-show-field {
+  border: 1px solid black;
+  height: 40%;
+  width: 90%;
+  background-color: white;
+  margin: 5% 0% 0% 5%;
+}
+
+.card-area-main {
+  border: 1px solid black;
+  height: 93%;
+  width: 90%;
+  margin: 5% 0% 0% 5%;
+}
+
+.card-area-title {
+  height: 15%;
+  width: 90%;
+  border: 1px solid black;
+  margin: 3% 0% 0% 5%;
+}
+
+.card-area-title-text {
+  color: #9b9b9b;
+  width: 90%;
+  height: 80%;
+  text-align: center;
+  margin: 2.5% 0% 0% 5%;
+}
+
+.card-area-taxes {
+  border: 1px solid black;
+  height: 50%;
+  width: 90%;
+  margin: 5% 0% 0% 5%;
+}
+
+.card-area-taxes-field {
+  height: 16.7%;
+  width: 100%;
+}
+
+.card-area-build-price {
+  height: 22%;
+  width: 90%;
+  margin: -5% 0% 0% 5%;
+  border: 1px solid black;
+}
+
+.card-area-tax-text {
+  width: 50%;
+  height: 100%;
+  margin-top: -1%;
+  float: left;
+}
+
+.card-area-tax-data {
+  width: 30%;
+  height: 100%;
+  float: right;
+  margin-top: -1%;
 }
