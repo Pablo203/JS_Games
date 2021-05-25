@@ -23,7 +23,10 @@ board = (mode) => {
         text_size = 10;
     }
     //Ustawienie odpowiedniej siatki Grida
-    document.getElementById("mine").style = "grid-template-columns: repeat(" + size + " ," + (100 / size) + "%); grid-template-rows: repeat(" + size + " ," + (100 / size) + "%);"
+    document.getElementById("mine").style = "grid-template-rows: repeat(" + size + " ," + (100 / size) + "%); grid-template-columns: repeat(" + size + " ," + (100 / size) + "%)";
+    //document.getElementById("mine").style += "grid-template-rows: repeat(" + size + " ," + (100 / size) + "%)";
+    /*document.getElementById("mine").style.gridTemplateColumns = "repeat(" + size + ", " + (100/size) + "%)";
+    document.getElementById("mine").style.gridTemplateRows = "repeat(" + size + ", " + (100/size) + "%)";*/
 
     //Wyświetlenie odpowiedniej liczby pól  i = kolumny, j = rzędy
     for (let i = 0; i < size; i++) {
