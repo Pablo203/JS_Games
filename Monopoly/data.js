@@ -68,12 +68,12 @@ var property = {
         "color" : "brown",
         "name" : "Mediter",
         "value" : 60,
-        "house" : 0,
+        "house" : 3,
         "hotel" : 0,
         "house_price" : 40,
         "hotel_price" : 200,
         "price_default" : 200,
-        "own" : " "
+        "own" : "player2"
     },
     "2" : {
         "color" : "white",

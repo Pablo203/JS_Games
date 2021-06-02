@@ -717,12 +717,72 @@
   margin-top: 4%;
 }
 
+.sold-main {
+  border: 1px solid black;
+  height: 65%;
+  width: 50%;
+  position: absolute;
+  margin-top: 2.5%;
+  margin-left: 2%;
+  background-color: white;
+  display: none;
+}
+
+.sold-title {
+  border: 1px solid black;
+  width: 100%;
+  height: 20%;
+  display: none;
+  position: absolute;
+}
+
+.sold-title-text {
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+}
+
+.sold-content {
+  border: 1px solid black;
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  margin-top: 16.5%;
+}
+
+.sell-text-area {
+  border: 1px solid black;
+  width: 85%;
+  height: 100%;
+  float: left;
+}
+
+.sell-btn-area {
+  border: 1px solid black;
+  width: 15%;
+  height: 100%;
+  margin-top: 0%;
+  float: left;
+}
+
+.sell-btn {
+  height: 100%;
+  width: 15%;
+  float: left;
+}
+
+.sold-position {
+  border: 1px solid black;
+}
+
 .dice-1 {
   height: 15%;
   width: 10%;
   position: absolute;
   border: 1px solid black;
-  margin: 17% 0% 0% 5%;
+  margin: -12% 0% 0% 40%;
 }
 
 .dice-2 {
@@ -730,4 +790,60 @@
   width: 10%;
   position: absolute;
   border: 1px solid black;
+  margin: 6% 0% 0% 5%;
+}
+
+.dice-point {
+  height: 25%;
+  width: 25%;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: black;
+}
+
+.dice-1-point {
+  height: 100%;
+  width: 100%;
+  margin: 35% 0% 0% 38%;
+  display: none;
+}
+
+.dice-2-point {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  display: none;
+  display: none;
+}
+
+.dice-3-point {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  display: none;
+  display: none;
+}
+
+.dice-4-point {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  display: none;
+  display: none;
+}
+
+.dice-5-point {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  display: none;
+  display: none;
+}
+
+.dice-6-point {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  display: none;
+  display: none;
 }
