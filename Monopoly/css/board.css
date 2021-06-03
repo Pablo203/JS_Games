@@ -113,6 +113,7 @@
   height: 25%;
   margin-top: -1%;
   margin-left: -2%;
+  display: flex;
   border: 1px solid black;
   background-color: brown;
 }
@@ -122,6 +123,7 @@
   height: 25%;
   margin-top: -1%;
   margin-left: -2%;
+  display: flex;
   border: 1px solid black;
   background-color: lightblue;
 }
@@ -131,6 +133,7 @@
   height: 25%;
   margin-top: -1%;
   margin-left: -2%;
+  display: flex;
   border: 1px solid black;
   background-color: black;
 }
@@ -200,6 +203,7 @@
   height: 25%;
   margin-top: -1%;
   margin-left: -2%;
+  display: flex;
   border: 1px solid black;
   background-color: black;
 }
@@ -209,6 +213,7 @@
   height: 25%;
   margin-top: -1%;
   margin-left: -2%;
+  display: flex;
   border: 1px solid black;
   background-color: red;
 }
@@ -218,6 +223,7 @@
   height: 25%;
   margin-top: -1%;
   margin-left: -2%;
+  display: flex;
   border: 1px solid black;
   background-color: yellow;
 }
@@ -846,4 +852,40 @@
   border: 1px solid black;
   display: none;
   display: none;
+}
+
+.house-bottom-top {
+  border: 1px solid black;
+  background-color: #1ed85c;
+  display: none;
+  width: 24%;
+  height: 100%;
+  margin-left: 3%;
+}
+
+.house-side {
+  border: 1px solid black;
+  background-color: #1ed85c;
+  display: none;
+  height: 24%;
+  width: 100%;
+  margin-top: 3%;
+}
+
+.hotel-bottom-top {
+  border: 1px solid black;
+  width: 50%;
+  height: 100%;
+  display: none;
+  background-color: #ee5555;
+  margin-left: 25%;
+}
+
+.hotel-side {
+  border: 1px solid black;
+  width: 100%;
+  height: 50%;
+  display: none;
+  background-color: #ee5555;
+  margin-top: 40%;
 }

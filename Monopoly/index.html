@@ -178,7 +178,16 @@
                             </div>
                         </div>
                         <hr style="background-color: black; width: 75%; margin-top: 4%;">
-                        <div class="card-area-build-price"></div>
+                        <div class="card-area-build-price">
+                            <div class="card-area-taxes-field">
+                                <div class="card-area-tax-text" style="width: 70%; margin-top: 5%;">1 house price:</div>
+                                <div class="card-area-tax-data" id="A_house_build" style = "margin-top: 5%;"></div>
+                            </div>
+                            <div class="card-area-taxes-field">
+                                <div class="card-area-tax-text" style="width: 70%; margin-top: 5%;">1 hotel price:</div>
+                                <div class="card-area-tax-data" id="A_hotel_build" style = "margin-top: 5%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!--Card Show Area End-->
@@ -201,7 +210,11 @@
 
                     <div class="top-row-field">
                         <div class="red-color">
-
+                            <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="hotel-bottom-top"></div>
                         </div>
                         <p class="text">Kentucky</p>
                         <p class="text-2">220</p>
@@ -219,7 +232,11 @@
 
                     <div class="top-row-field">
                         <div class="red-color">
-
+                            <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="hotel-bottom-top"></div>
                         </div>
                         <p class="text">Indiana</p>
                         <p class="text-2">220</p>
@@ -229,7 +246,11 @@
 
                     <div class="top-row-field">
                         <div class="red-color">
-
+                            <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="hotel-bottom-top"></div>
                         </div>
                         <p class="text">Illinois</p>
                         <p class="text-2">240</p>
@@ -247,7 +268,11 @@
 
                     <div class="top-row-field">
                         <div class="yellow-color">
-
+                            <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="hotel-bottom-top"></div>
                         </div>
                         <p class="text">Atlantic</p>
                         <p class="text-2">260</p>
@@ -256,7 +281,11 @@
                     </div>
                     <div class="top-row-field">
                         <div class="yellow-color">
-
+                            <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="hotel-bottom-top"></div>
                         </div>
                         <p class="text">Ventnor</p>
                         <p class="text-2">260</p>
@@ -274,7 +303,11 @@
 
                     <div class="top-row-field">
                         <div class="yellow-color">
-
+                            <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="house-bottom-top"></div>
+                    <div class="hotel-bottom-top"></div>
                         </div>
                         <p class="text">Marvin</p>
                         <p class="text-2">280</p>
@@ -282,7 +315,6 @@
                         <div class="pawn-place-2-T" id="29b"></div>
 
                     </div>
-
                     <div class="top-right-corner-field">
                         <div class="go-jail-main">Go to Jail</div>
                         <div class="pawn-place-1-T" style="margin-top: -88%; width: 25%;" id="30a"></div>
@@ -292,7 +324,11 @@
                     <!-- Side Fields -->
                     <div class="left-side-field">
                         <div class="orange-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">New York</p>
                         <p class="text-2">200</p>
@@ -358,12 +394,12 @@
                         <div class="chance-box" id="chance_box">
                             <div class="chance-box-title" id="chance_box_title">
                                 <p class="chance-box-title-text" id="chance_title">
-                                    a
+                                    Chance
                                 </p>
                             </div>
                             <div class="chance-box-content" id="chance_box_content">
                                 <p class="chance-box-content-text" id="chance_content">
-                                    a
+                                    
                                 </p>
                             </div>
                             <div class="chance-box-pass" id="chance_box_pass">
@@ -383,7 +419,7 @@
                             </div>
                             <div class="chest-box-content" id="chest_box_content">
                                 <p class="chest-box-content-text" id="chest_content">
-                                    a
+                                    
                                 </p>
                             </div>
                             <div class="chest-box-pass" id="chest_box_pass">
@@ -393,6 +429,28 @@
                             </div>
                         </div>
                         <!--Chest Info Area End-->
+
+                        <!--Upgrade Info Area Start-->
+                        <div class="chest-box" id="upgrade_box">
+                            <div class="chest-box-title" id="upgrade_box_title">
+                                <p class="chest-box-title-text" id="upgrade_title">
+                                    Building
+                                </p>
+                            </div>
+                            <div class="chest-box-content" id="upgrade_box_content">
+                                <button class="btn btn-dark" id="house1Btn" style="width: 25%; height: 20%; margin: 5% 0% 0% 22%" onclick="house1();">1 house</button>
+                                <button class="btn btn-dark" id="house2Btn" style="width: 25%; height: 20%; margin: 5% 0% 0% 5%" onclick="house2();">2 houses</button>
+                                <button class="btn btn-dark" id="house3Btn" style="width: 25%; height: 20%; margin: 5% 0% 0% 22%" onclick="house3();">3 houses</button>
+                                <button class="btn btn-dark" id="house4Btn" style="width: 25%; height: 20%; margin: 5% 0% 0% 5%" onclick="house4();">4 houses</button>
+                                <button class="btn btn-dark" id="hotelBtn" style="width: 50%; height: 20%; margin: 5% 0% 0% 25%" onclick="hotel();">1 hotel</button>
+                            </div>
+                            <div class="chest-box-pass" id="upgrade_box_pass">
+                                <button class="btn btn-danger chest-box-btn-pass" onclick="pass()">
+                                    Pass
+                                </button>
+                            </div>
+                        </div>
+                        <!--Upgrade Info Area End-->
 
                         <!--Tax Info Area Start-->
                         <div class="tax-box" id="tax_box">
@@ -544,7 +602,11 @@
 
                     <div class="right-side-field">
                         <div class="green-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">Pacific</p>
                         <p class="text-2">300</p>
@@ -555,7 +617,11 @@
 
                     <div class="left-side-field">
                         <div class="orange-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">Tennessee</p>
                         <p class="text-2">180</p>
@@ -565,7 +631,11 @@
 
                     <div class="right-side-field">
                         <div class="green-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">North Carolina</p>
                         <p class="text-2">300</p>
@@ -589,7 +659,11 @@
 
                     <div class="left-side-field">
                         <div class="orange-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">St. James Place</p>
                         <p class="text-2">180</p>
@@ -599,7 +673,11 @@
 
                     <div class="right-side-field">
                         <div class="green-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">Pensylvania</p>
                         <p class="text-2">320</p>
@@ -627,7 +705,11 @@
 
                     <div class="left-side-field">
                         <div class="pink-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">Virginia</p>
                         <p class="text-2">160</p>
@@ -644,7 +726,11 @@
 
                     <div class="left-side-field">
                         <div class="pink-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">States</p>
                         <p class="text-2">140</p>
@@ -654,7 +740,11 @@
 
                     <div class="right-side-field">
                         <div class="blue-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">Park Place</p>
                         <p class="text-2">350</p>
@@ -678,7 +768,11 @@
 
                     <div class="left-side-field">
                         <div class="pink-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">St. Charles Place</p>
                         <p class="text-2">140</p>
@@ -689,7 +783,11 @@
 
                     <div class="right-side-field">
                         <div class="blue-color">
-
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="house-side"></div>
+                            <div class="hotel-side"></div>
                         </div>
                         <p class="text">Board Walk</p>
                         <p class="text-2">400</p>
@@ -719,7 +817,11 @@
 
                     <div class="bottom-row-field">
                         <div class="light-blue-color">
-
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="hotel-bottom-top"></div>
                         </div>
                         <p class="text">Connecticut</p>
                         <p class="text-2">120</p>
@@ -729,7 +831,11 @@
 
                     <div class="bottom-row-field">
                         <div class="light-blue-color">
-
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="hotel-bottom-top"></div>
                         </div>
                         <p class="text">Vermont</p>
                         <p class="text-2">100</p>
@@ -747,7 +853,11 @@
 
                     <div class="bottom-row-field">
                         <div class="light-blue-color">
-
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="hotel-bottom-top"></div>
                         </div>
                         <p class="text">Oriental</p>
                         <p class="text-2">100</p>
@@ -773,6 +883,11 @@
 
                     <div class="bottom-row-field">
                         <div class="brown-color">
+                            <div class="house-bottom-top" id="3 1"></div>
+                            <div class="house-bottom-top" id="3 2"></div>
+                            <div class="house-bottom-top" id="3 3"></div>
+                            <div class="house-bottom-top" id="3 4"></div>
+                            <div class="hotel-bottom-top" id="3 5"></div>
                         </div>
                         <p class="text">Baltic</p>
                         <p class="text-2">60</p>
@@ -790,6 +905,11 @@
 
                     <div class="bottom-row-field">
                         <div class="brown-color">
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="house-bottom-top"></div>
+                            <div class="hotel-bottom-top"></div>
                         </div>
                         <p class="text">Mediter</p>
                         <p class="text-2">60</p>
@@ -830,7 +950,7 @@
                                 </div>
                                 <div class="last-rail-card" id="B35" onmouseover="showCard(this.id)">
                                     <div class="last-rail-card-head">
-                                        s
+                                        
                                     </div>
                                 </div>
                         </div>
@@ -975,7 +1095,16 @@
                             </div>
                         </div>
                         <hr style="background-color: black; width: 75%; margin-top: 4%;">
-                        <div class="card-area-build-price"></div>
+                        <div class="card-area-build-price">
+                            <div class="card-area-taxes-field">
+                                <div class="card-area-tax-text" style="width: 70%; margin-top: 5%;">1 house price:</div>
+                                <div class="card-area-tax-data" id="B_house_build" style = "margin-top: 5%;"></div>
+                            </div>
+                            <div class="card-area-taxes-field">
+                                <div class="card-area-tax-text" style="width: 70%; margin-top: 5%;">1 hotel price:</div>
+                                <div class="card-area-tax-data" id="B_hotel_build" style = "margin-top: 5%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -983,6 +1112,12 @@
     </div>
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <script src="prison.js"></script>
+    <script src="chanceChest.js"></script>
+    <script src="selling.js"></script>
+    <script src="playerBarAction.js"></script>
+    <script src="fieldOn.js"></script>
+    <script src="fieldUpgrade.js"></script>
 </body>
 
 </html>

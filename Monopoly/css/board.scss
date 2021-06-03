@@ -121,6 +121,7 @@
     height: 25%;
     margin-top: -1%;
     margin-left: -2%;
+    display: flex;
 }
 
 .brown-color {
@@ -196,6 +197,7 @@
     height: 25%;
     margin-top: -1%;
     margin-left: -2%;
+    display: flex;
 }
 
 .black-color-T{
@@ -761,4 +763,42 @@
 .dice-6-point{
     @include multi-dice-point;
     display: none;
+}
+
+//Building Area
+@mixin house{
+    @include border;
+    background-color: #1ed85c;
+    display: none;
+}
+.house-bottom-top{
+    @include house;
+    width: 24%;
+    height: 100%;
+    margin-left: 3%;
+}
+
+.house-side{
+    @include house;
+    height: 24%;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.hotel-bottom-top{
+    @include border;
+    width: 50%;
+    height: 100%;
+    display: none;
+    background-color: #ee5555;
+    margin-left: 25%;
+}
+
+.hotel-side{
+    @include border;
+    width: 100%;
+    height: 50%;
+    display: none;
+    background-color: #ee5555;
+    margin-top: 40%;
 }
