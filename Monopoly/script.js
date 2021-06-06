@@ -49,7 +49,7 @@ var tempObj = {
 
 diceThrow = () => {
     gamesData["drop"]["1"] = Math.floor(Math.random() * 1) + 1;
-    gamesData["drop"]["2"] = Math.floor(Math.random() * 1) + 2;
+    gamesData["drop"]["2"] = Math.floor(Math.random() * 1) + 35;
 }
 
 diceChange = () => {
@@ -118,7 +118,7 @@ document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#33
 
 //Przetasowanie talii
 shuffleArray(specialCards["chest"]);
-shuffleArray(specialCards["chance"]);
+//shuffleArray(specialCards["chance"]);
 
 
 is_special = (player_who) => {
@@ -161,7 +161,7 @@ is_special = (player_who) => {
 
 move = () => {
     diceThrow();
-    diceChange();
+    //diceChange();
     //Dissapearing middle box and shows info box 
     document.getElementById("community_chest").style.display = "none";
     document.getElementById("knefel").style.display = "none";

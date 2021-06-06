@@ -201,12 +201,77 @@ chance_action = () => {
 
     } else if (number == 20) {
         console.log("20");
-
+        var fieldOn = players[who]["field"] % 39;
+        if (fieldOn == 7) {
+            players[who]["result"] = 12;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+            players[who]["field"] = players[who]["result"];
+            gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+            hide("chance");
+            isOwned(who);
+            console.log(players[who]["result"]);
+            console.log("Power Plant");
+        } else if(fieldOn == 22) {
+            players[who]["result"] = 27;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+            players[who]["field"] = players[who]["result"];
+            gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+            hide("chance");
+            isOwned(who);
+            console.log(players[who]["result"]);
+            console.log("Water Works");
+        } else if(fieldOn == 36){
+            players[who]["result"] = 12;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+            players[who]["field"] = players[who]["result"];
+            gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+            console.log(players[who]["result"]);
+            players[who]["PlayerCash"] += 200;
+            document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+            hide("chance");
+            isOwned(who);
+            console.log("Power Plant");
+        }
 
     } else if (number == 21) {
         console.log("21");
-
-
+        var fieldOn = players[who]["field"] % 39;
+        if (fieldOn == 7) {
+            players[who]["result"] = 15;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+            players[who]["field"] = players[who]["result"];
+            gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+            hide("chance");
+            isOwned(who);
+            console.log(players[who]["result"]);
+            console.log("Railroad W");
+        } else if(fieldOn == 22) {
+            players[who]["result"] = 25;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+            players[who]["field"] = players[who]["result"];
+            gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+            hide("chance");
+            isOwned(who);
+            console.log(players[who]["result"]);
+            console.log("Railroad N");
+        } else if(fieldOn == 36){
+            players[who]["result"] = 5;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = "#FFFFFF";
+            players[who]["field"] = players[who]["result"];
+            gamesData["field_Id"][mark] = players[who]["field"] + mark2;
+            document.getElementById(gamesData["field_Id"][mark]).style.backgroundColor = color;
+            console.log(players[who]["result"]);
+            players[who]["PlayerCash"] += 200;
+            document.getElementById(which).innerHTML = players[who]["PlayerCash"];
+            hide("chance");
+            isOwned(who);
+            console.log("Railroad S");
+        }
     } else if (number == 22) {
         console.log("22");
         players[who]["PlayerCash"] += 50;
