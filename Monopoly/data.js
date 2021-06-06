@@ -54,7 +54,6 @@ var specialCards = {
         "30": "Płacisz każdemu z graczy 50$", 
         "31": "Dostajesz 150$",
         "32": "Wygrywasz konkurs krzyżówek. Dostajesz 100$"
-        //To finish: 20, 21
     }
 };
 
@@ -95,7 +94,7 @@ var property = {
         "house_price_pay_3" : 360,
         "house_price_pay_4" : 640,
         "hotel_price_pay" : 900,
-        "own" : "player1"
+        "own" : " "
     },
     "4" : {
         "color" : "white",

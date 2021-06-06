@@ -5,7 +5,7 @@ isOwned = (player_who) => {
         if ((property[fieldOwn]["own"]) == player_who) {
             if (property[fieldOwn]["hotel"] != 1) {
                 upgrade();
-            } else{
+            } else {
                 pass();
             }
         } else {
@@ -27,6 +27,8 @@ pay = () => {
     var player_who = (gamesData["turn"] - 1) % 2;
     var standing = " ";
     var owner = " ";
+    var railFields = ["5", "15", "25", "35"];
+    var serviceFields = ["12", "28"];
     if (player_who == 1) {
         standing = "player1"
         standingCash = "money_1";
@@ -40,22 +42,72 @@ pay = () => {
     }
     var toPay = 0;
     var whichField = players[standing]["field"];
-    var houseCount = property[whichField]["house"];
-    if (property[whichField]["house"] == 0 && property[whichField]["hotel"] == 0) {
-        toPay = property[whichField]["price_default"];
-    } else if (property[whichField]["house"] != 0 && property[whichField]["hotel"] == 0) {
-        toPay = property[whichField]["house_price_pay_" + houseCount];
-    } else if (property[whichField]["hotel"] != 0) {
-        toPay = property[whichField]["hotel_price_pay"];
-    }
-    if (toPay <= players[standing]["PlayerCash"]) {
-        players[standing]["PlayerCash"] -= toPay;
-        players[owner]["PlayerCash"] += toPay;
-        document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"];
-        document.getElementById(ownerCash).innerHTML = players[owner]["PlayerCash"];
-        pass();
-    } else if (toPay > players[standing]["PlayerCash"]) {
-        sold();
+    console.log(whichField);
+    if (whichField == (12 || 28)) {
+        var serviceField = 0;
+        var serviceOwned = 0;
+        for(x in serviceFields){
+            serviceField = serviceFields[x];
+            if(property[serviceField]["own"] == owner){
+                serviceOwned += 10;
+                console.log(serviceOwned);
+            }
+        }
+        diceThrow();
+        var diceSum = gamesData["drop"]["1"] + gamesData["drop"]["2"];
+        alert("Wyrzuciłeś: " + diceSum);
+        toPay = serviceOwned * diceSum;
+        console.log(toPay);
+        if (toPay <= players[standing]["PlayerCash"]) {
+            players[standing]["PlayerCash"] -= toPay;
+            players[owner]["PlayerCash"] += toPay;
+            document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"];
+            document.getElementById(ownerCash).innerHTML = players[owner]["PlayerCash"];
+            pass();
+        } else if (toPay > players[standing]["PlayerCash"]) {
+            sold();
+        }
+        console.log("POWER PLANT || WATER WORKS");
+
+    } else if(whichField == (5 || 15 || 25 || 35)) {
+        var railField = 0;
+        for(x in railFields){
+            railField = railFields[x];
+            if(property[railField]["own"] == owner){
+                toPay += 50;
+                console.log(toPay);
+            }
+        }
+        console.log(toPay);
+        if (toPay <= players[standing]["PlayerCash"]) {
+            players[standing]["PlayerCash"] -= toPay;
+            players[owner]["PlayerCash"] += toPay;
+            document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"];
+            document.getElementById(ownerCash).innerHTML = players[owner]["PlayerCash"];
+            pass();
+        } else if (toPay > players[standing]["PlayerCash"]) {
+            sold();
+        }
+        console.log("RAILROAD");
+
+    } else {
+        var houseCount = property[whichField]["house"];
+        if (property[whichField]["house"] == 0 && property[whichField]["hotel"] == 0) {
+            toPay = property[whichField]["price_default"];
+        } else if (property[whichField]["house"] != 0 && property[whichField]["hotel"] == 0) {
+            toPay = property[whichField]["house_price_pay_" + houseCount];
+        } else if (property[whichField]["hotel"] != 0) {
+            toPay = property[whichField]["hotel_price_pay"];
+        }
+        if (toPay <= players[standing]["PlayerCash"]) {
+            players[standing]["PlayerCash"] -= toPay;
+            players[owner]["PlayerCash"] += toPay;
+            document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"];
+            document.getElementById(ownerCash).innerHTML = players[owner]["PlayerCash"];
+            pass();
+        } else if (toPay > players[standing]["PlayerCash"]) {
+            sold();
+        }
     }
 }
 
