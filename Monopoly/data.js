@@ -5,7 +5,6 @@ var specialCards = {
         "special": [0, 10, 20, 30],
         "chances": [7, 22, 36],
         "chests": [2, 17, 33],
-        "taxes": [4, 38]
     },
     "cards": {
         "1": "Idź na start",
@@ -36,7 +35,7 @@ var specialCards = {
         "17": "Idź na start", 
         "18": "Idź do Illinois",
         "19": "Idź do St. Charles Place",
-        "20": "Idź do najbliższej placówki (Elektrownia Wodociągi() jeśli nie jest kupiona możesz ją kupić jeśli jest kupiona zapłać właścicielowi",
+        "20": "Idź do najbliższej placówki, jeśli nie jest kupiona możesz ją kupić jeśli jest kupiona zapłać właścicielowi",
         "21": "Idź do najbliższych kolei, jeśli nie są kupione możesz je kupić jeśli jest kupiona zapłać właścicielowi",
 
         "22": "Bank wypłaca Ci 50$",
@@ -55,6 +54,7 @@ var specialCards = {
         "31": "Dostajesz 150$",
         "32": "Wygrywasz konkurs krzyżówek. Dostajesz 100$"
     }
+    //15 26 to do
 };
 
 var property = {
@@ -84,8 +84,8 @@ var property = {
         "color" : "brown",
         "name" : "Baltic",
         "value" : 120,
-        "house" : 0,
-        "hotel" : 0,
+        "house" : 1,
+        "hotel" : 1,
         "house_price" : 100,
         "hotel_price" : 100,
         "price_default" : 10,

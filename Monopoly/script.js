@@ -48,8 +48,8 @@ var tempObj = {
 }*/
 
 diceThrow = () => {
-    gamesData["drop"]["1"] = Math.floor(Math.random() * 6) + 1;
-    gamesData["drop"]["2"] = Math.floor(Math.random() * 6) + 1;
+    gamesData["drop"]["1"] = Math.floor(Math.random() * 1) + 2;
+    gamesData["drop"]["2"] = Math.floor(Math.random() * 1) + 2;
 }
 
 diceChange = () => {
@@ -122,6 +122,11 @@ shuffleArray(specialCards["chest"]);
 
 
 is_special = (player_who) => {
+    if(player_who == "player1"){
+        var money = "money_1";
+    } else if(player_who == "player2"){
+        var money = "money_2";
+    }
     //Checking if field is in any corner. If not takes every element from arrays and compare it with actual field
     if (players[player_who]["field"] == 10) {
         console.log("Prison Field");
@@ -137,6 +142,18 @@ is_special = (player_who) => {
     } else if (players[player_who]["field"] == 0) {
         console.log("Start");
         pass();
+    } else if(players[player_who]["field"] == 38){
+        console.log("Luxury Tax");
+        players[player_who]["PlayerCash"] -= 75;
+        document.getElementById(money).innerHTML = players[player_who]["PlayerCash"];
+        alert("Zapłać podatek w wysokości 75$");
+        hide("tax");
+        pass();
+    } else if(players[player_who]["field"] == 4){
+        console.log("4");
+        show("tax");
+        document.getElementById("tax_title").innerHTML = "Podatek";
+        
     }
     /*else if(field == )*/
     for (x in specialCards["fields"]["chances"]) {
@@ -149,11 +166,6 @@ is_special = (player_who) => {
         if ((specialCards["fields"]["chests"])[x] == players[player_who]["field"]) {
             show("chest");
             chestGet();
-        }
-    }
-    for (x in specialCards["fields"]["taxes"]) {
-        if ((specialCards["fields"]["taxes"])[x] == players[player_who]["field"]) {
-            show("tax");
         }
     }
 }

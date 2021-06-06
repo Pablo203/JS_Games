@@ -136,3 +136,40 @@ buy = () => {
         pass();
     }
 }
+
+payTax = () =>{
+    var player_who = (gamesData["turn"] - 1) % 2;
+    var standing = " ";
+    if (player_who == 1) {
+        standing = "player1";
+        standingCash = "money_1";
+    } else if (player_who == 0) {
+        standing = "player2";
+        standingCash = "money_2";
+    }
+    players[standing]["PlayerCash"] -= 200;
+    document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"];
+    pass();
+}
+
+payTaxPercent = () =>{
+    var player_who = (gamesData["turn"] - 1) % 2;
+    var standing = " ";
+    if (player_who == 1) {
+        standing = "player1";
+        standingCash = "money_1";
+    } else if (player_who == 0) {
+        standing = "player2";
+        standingCash = "money_2";
+    }
+    var taxToPay = players[standing]["PlayerCash"] * 0.1;
+    for(x in property){
+        if(property[x]["own"] == standing){
+            taxToPay += property[x]["price_default"];
+            taxToPay += property[x]["house_price"] * property[x]["house"];
+            taxToPay += property[x]["hotel_price"] * property[x]["hotel"];
+        }
+    }
+    document.getElementById(standingCash).innerHTML = players[standing]["PlayerCash"] -= taxToPay;
+    pass();
+}

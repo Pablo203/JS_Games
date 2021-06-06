@@ -617,6 +617,13 @@
 
 .tax-box-btn-pass{
     @include special-box-btn;
+    margin-left: 20%;
+}
+
+.tax-box-btn-pass-2{
+    @include special-box-btn;
+    margin-left: 5%;
+    width: 35%;
 }
 
 .tax-box-title-text{
