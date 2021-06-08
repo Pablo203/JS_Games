@@ -39,17 +39,9 @@ var tempObj = {
 }
 //Functions Setup Area
 
-/*sleep = (milliseconds) => {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-        currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-}*/
-
 diceThrow = () => {
-    gamesData["drop"]["1"] = Math.floor(Math.random() * 1) + 2;
-    gamesData["drop"]["2"] = Math.floor(Math.random() * 1) + 2;
+    gamesData["drop"]["1"] = Math.floor(Math.random() * 6) + 1;
+    gamesData["drop"]["2"] = Math.floor(Math.random() * 6) + 1;
 }
 
 diceChange = () => {
@@ -118,7 +110,7 @@ document.getElementById(gamesData["field_Id"]["B"]).style.backgroundColor = "#33
 
 //Przetasowanie talii
 shuffleArray(specialCards["chest"]);
-//shuffleArray(specialCards["chance"]);
+shuffleArray(specialCards["chance"]);
 
 
 is_special = (player_who) => {
@@ -153,7 +145,7 @@ is_special = (player_who) => {
         console.log("4");
         show("tax");
         document.getElementById("tax_title").innerHTML = "Podatek";
-        
+
     }
     /*else if(field == )*/
     for (x in specialCards["fields"]["chances"]) {
@@ -173,7 +165,7 @@ is_special = (player_who) => {
 
 move = () => {
     diceThrow();
-    //diceChange();
+    diceChange();
     //Dissapearing middle box and shows info box 
     document.getElementById("community_chest").style.display = "none";
     document.getElementById("knefel").style.display = "none";

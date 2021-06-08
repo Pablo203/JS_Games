@@ -65,7 +65,7 @@ chest_action = () => {
         if (players[who]["prisonOut"] < 2) {
             players[who]["prisonOut"]++;
             //document.getElementById("prison" + mark + players[who]["prisonOut"]).style.display = "block";
-            document.getElementById("prison" + mark + players[who]["prisonOut"]).innerHTML = "asasdgfsd";
+            document.getElementById("prison" + mark + players[who]["prisonOut"]).innerHTML = "Wyjdź z więzienia";
         }
 
     } else if (number == 6) {
