@@ -1,7 +1,7 @@
 isOwned = (player_who) => {
     var fieldOwn = players[player_who]["field"];
     var owner = " ";
-    if ((property[fieldOwn]["own"]) != " ") {
+    if (((property[fieldOwn]["own"]) != " ") || (property[fieldOwn]["own"] != 0)) {
         if ((property[fieldOwn]["own"]) == player_who) {
             if (property[fieldOwn]["hotel"] != 1) {
                 upgrade();

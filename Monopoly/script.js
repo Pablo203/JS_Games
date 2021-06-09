@@ -40,8 +40,8 @@ var tempObj = {
 //Functions Setup Area
 
 diceThrow = () => {
-    gamesData["drop"]["1"] = Math.floor(Math.random() * 6) + 1;
-    gamesData["drop"]["2"] = Math.floor(Math.random() * 6) + 1;
+    gamesData["drop"]["1"] = Math.floor(Math.random() * 1) + 12;
+    gamesData["drop"]["2"] = Math.floor(Math.random() * 1) + 1;
 }
 
 diceChange = () => {
@@ -74,8 +74,8 @@ pass = () => {
     document.getElementById("ask").style.display = "block";
     document.getElementById("info").style.display = "none";
     document.getElementById("payment").style.display = "none";
-    document.getElementById("dice_1").style.display = "block";
-    document.getElementById("dice_2").style.display = "block";
+    /*document.getElementById("dice_1").style.display = "block";
+    document.getElementById("dice_2").style.display = "block";*/
     hide("chance");
     hide("chest");
     hide("tax");
@@ -165,7 +165,7 @@ is_special = (player_who) => {
 
 move = () => {
     diceThrow();
-    diceChange();
+    //diceChange();
     //Dissapearing middle box and shows info box 
     document.getElementById("community_chest").style.display = "none";
     document.getElementById("knefel").style.display = "none";
@@ -198,6 +198,7 @@ move = () => {
             gamesData["field_Id"]["A"] = players["player1"]["field"] + "a";
             document.getElementById(gamesData["field_Id"]["A"]).style.backgroundColor = "#ca1a1a";
             isOwned("player1");
+            console.log("isOwned Check")
             is_special("player1");
             gamesData["turn"]++;
         }
@@ -230,11 +231,8 @@ move = () => {
 
 //onload = sold();
 hideMain = () => {
-    document.getElementById("community_chest").style.display = "none";
-    document.getElementById("knefel").style.display = "none";
-    document.getElementById("ask").style.display = "none";
     document.getElementById("dice_1").style.display = "none";
     document.getElementById("dice_2").style.display = "none";
-    show("upgrade");
+
 }
-//onload = hideMain();
+onload = hideMain();

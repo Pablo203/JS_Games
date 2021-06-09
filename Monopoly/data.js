@@ -58,6 +58,11 @@ var specialCards = {
 };
 
 var property = {
+    "0" : {
+        "color" : "white",
+        "name" : "start",
+        "own" : " "
+    },
     "1" : {
         "color" : "brown",
         "name" : "Mediter",
@@ -214,7 +219,7 @@ var property = {
         "house_price_pay_3" : 900,
         "house_price_pay_4" : 1250,
         "hotel_price_pay" : 1500,
-        "own" : " "
+        "own" : "player1"
     },
     "14" : {
         "color" : "pink",
