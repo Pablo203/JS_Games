@@ -40,8 +40,8 @@ var tempObj = {
 //Functions Setup Area
 
 diceThrow = () => {
-    gamesData["drop"]["1"] = Math.floor(Math.random() * 1) + 12;
-    gamesData["drop"]["2"] = Math.floor(Math.random() * 1) + 1;
+    gamesData["drop"]["1"] = Math.floor(Math.random() * 6) + 1;
+    gamesData["drop"]["2"] = Math.floor(Math.random() * 6) + 1;
 }
 
 diceChange = () => {

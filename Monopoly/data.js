@@ -219,7 +219,7 @@ var property = {
         "house_price_pay_3" : 900,
         "house_price_pay_4" : 1250,
         "hotel_price_pay" : 1500,
-        "own" : "player1"
+        "own" : ""
     },
     "14" : {
         "color" : "pink",
